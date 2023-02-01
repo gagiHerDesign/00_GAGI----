@@ -33,7 +33,7 @@ app.use((_, req, res, next) => {
 
 app.use(express.json())
 app.use((_, req, res, next) => {
-  res.status(400).json({ success: false, message: '格式錯誤' })
+  res.status(400).json({ success: false, message: '456格式錯誤' })
 })
 
 app.use('/users', userRoute)
