@@ -1,9 +1,4 @@
-<!--
-  Forked from:
-  https://quasar.dev/layout/header-and-footer#example--reveal
--->
 <template>
-
     <q-layout view="lHh lpr lFf" class="shadow-2 rounded-borders">
       <q-header reveal elevated>
         <q-toolbar>
@@ -18,12 +13,6 @@
         </q-toolbar>
       </q-header>
 
-      <q-footer reveal elevated>
-        <q-toolbar>
-          <q-toolbar-title>Footer</q-toolbar-title>
-        </q-toolbar>
-      </q-footer>
-
       <q-page-container>
         <q-page class="q-pa-md">
           <p v-for="n in 15" :key="n">
@@ -32,10 +21,11 @@
         </q-page>
         <router-view />
       </q-page-container>
+
+    <q-toolbar class="bg-primary">
+      <q-toolbar-title>你好/我是Footer</q-toolbar-title>
+    </q-toolbar>
+
     </q-layout>
-    <q-footer>
-      <q-toolbar>
-        <q-toolbar-title>Footer</q-toolbar-title>
-      </q-toolbar>
-    </q-footer>
+
  </template>
