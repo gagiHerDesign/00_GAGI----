@@ -1,5 +1,5 @@
 import { Schema, model, ObjectId, Error } from 'mongoose'
-import validator from 'validator'
+// import validator from 'validator'
 import bcrypt from 'bcrypt'
 
 const cartSchema = new Schema({
@@ -29,14 +29,15 @@ const schema = new Schema({
   },
   email: {
     type: String,
-    required: [true, '缺少信箱'],
-    unique: true,
-    validate: {
-      validator (email) {
-        return validator.isEmail(email)
-      },
-      message: '信箱格式錯誤'
-    }
+    default: []
+    // required: [true, '缺少信箱'],
+    // unique: true,
+    // validate: {
+    //   validator (email) {
+    //     return validator.isEmail(email)
+    //   },
+    //   message: '信箱格式錯誤'
+    // }
   },
   address: {
     type: String,

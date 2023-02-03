@@ -10,7 +10,7 @@
           sushi
         </q-toolbar-title>
         <q-btn flat round dense icon="shopping_cart" class="q-mr-sm"></q-btn>
-        <q-btn flat round dense icon="account_circle" class="q-mr-sm" @click="confirm = true"></q-btn>
+        <q-btn flat round dense icon="account_circle" class="q-mr-sm" @click="openLoginModal= true"></q-btn>
       </q-toolbar>
       <!-- 第二行 -->
       <q-toolbar>
@@ -30,44 +30,60 @@
     <q-page-container style="padding-top: 0;">
       <router-view />
       <!-- 彈出視窗 -->
-      <q-dialog v-model="confirm" persistent>
+      <!-- 註冊視窗 -->
+      <q-dialog v-model="openRegisterModal" persistent>
+        <div id="q-app" style="min-height: 50vh; background: #fff; margin: auto;">
+    <div class="q-mx-auto q-py-lg" style="max-width: 500px">
+      <div class="btn_submit" align="right">
+        <q-btn flat round color="primary" icon="close" v-close-popup></q-btn>
+      </div>
+      <h2>Create Account</h2>
+      <q-form @submit="onSubmit" class="q-gutter-md">
+        <!-- 帳號 -->
+        <q-input filled v-model="form.account" label="Your account *" :rules="[rules.required, rules.length]" counter
+          maxlength="20"></q-input>
+        <!-- 密碼 -->
+        <q-input filled v-model="form.password" label="Your password *" :rules="[rules.required, rules.length]" counter
+          maxlength="20"></q-input>
+        <!-- 確認密碼 -->
+        <q-input filled v-model="form.passwordConfirm" label="Comfirm Your password *" :rules="[rules.required, rules.length]"
+          counter maxlength="20"></q-input>
 
+        <div class="text-center" style="margin-top: 3rem;">
+          <!-- 註冊 -->
+          <q-btn label="REGISTER" type="submit" :loading="loading" color="secondary" style="width: 100%; padding: 1rem; font-weight: 300;"/>
+
+          <q-btn flat style="color: lightslategrey; font-weight: 300; margin-top: 1rem;" @click="openRegisterModal = false;openLoginModal = true" label="Already have an sushi account?" />
+        </div>
+      </q-form>
+
+    </div>
+  </div>
+      </q-dialog>
+      <!-- 登入視窗 -->
+      <q-dialog v-model="openLoginModal">
         <div id="q-app" style="min-height: 50vh; background: #fff; margin: auto;">
           <div class="q-mx-auto q-py-lg" style="max-width: 500px">
-
-            <q-form v-model="valid" @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+            <div class="btn_submit" align="right">
+              <q-btn flat round color="primary" icon="close" v-close-popup></q-btn>
+            </div>
+            <h2>Login</h2>
+            <q-form @submit="onSubmit" class="q-gutter-md">
               <!-- 帳號 -->
               <q-input filled v-model="form.account" label="Your account *"
-                :rules="[rules.required, rules.length]" counter="20" maxlength="20"></q-input>
+                :rules="[rules.required, rules.length]" counter maxlength="20"></q-input>
               <!-- 密碼 -->
-              <q-input filled v-model="form.password" label="Your password *" :rules="[rules.required, rules.length]" counter="20" maxlength="20"></q-input>
-              <!-- 確認密碼 -->
-              <q-input filled v-model="form.passwordConfirm" label="Your password *" :rules="[rules.required, rules.length]" counter="20" maxlength="20"></q-input>
-
-              <div>
-                <!-- 註冊 -->
-                <!-- <q-btn label="Submit" type="submit" color="primary" :loading="loading"></q-btn> -->
-                <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm"></q-btn>
-                <q-btn
-                    :loading="progress[2].loading"
-                    :percentage="progress[2].percentage"
-                    dark-percentage
-                    unelevated
-                    color="orange"
-                    text-color="grey-9"
-                    @click="startComputing(2)"
-                    icon="cloud_upload"
-                    style="width: 100px"
-                  />
+              <q-input filled v-model="form.password" label="Your password *" :rules="[rules.required, rules.length]" counter maxlength="20"></q-input>
+            <div>
+                <!-- 登入 -->
+                <q-btn style="width: 100%; padding: 1rem; font-weight: 300;" label="LOGIN" type="submit" :loading="loading" color="secondary" />
+                <p style="font-weight: 300; font-size: 20px; margin-top: 2rem;" >New to sushi ?</p>
+                <q-btn outline style="color: lightslategrey; font-weight: 300; margin-top: 1rem; width: 100%;" @click="openRegisterModal = true;openLoginModal = false" label="Create Account" type="submit" :loading="loading" color="secondary" />
               </div>
             </q-form>
 
-            <div class="btn_submit" align="right" style="">
-              <q-btn flat label="關閉視窗" color="primary" v-close-popup></q-btn>
-            </div>
           </div>
         </div>
-
       </q-dialog>
 
       <!-- footer -->
@@ -84,22 +100,18 @@
 </template>
 
 <script setup>
-// import { useQuasar } from 'quasar'
+import { ref, reactive } from 'vue'
 import validator from 'validator'
-import { ref, reactive, onBeforeUnmount } from 'vue'
-// import Swal from 'sweetalert2'
-// import { useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
+import { useRouter } from 'vue-router'
+import { api } from '../boot/axios'
+const tab = ref('')
 
 // const $q = useQuasar()
-// const router = useRouter()
-const valid = ref(false)
-// const loading = ref(false)
-const progress = ref([{ loading: false, percentage: 0 }])
-const intervals = [null, null, null]
-const tab = ref('')
-const confirm = ref(false)
-// const account = ref(null)
-// const password = ref(null)
+const router = useRouter()
+const loading = ref(false)
+const openRegisterModal = ref(false)
+const openLoginModal = ref(false)
 
 const form = reactive({
   account: '',
@@ -107,7 +119,6 @@ const form = reactive({
   passwordConfirm: ''
   // email: ''
 })
-
 const rules = {
   email (value) {
     return validator.isEmail(value) || '格式錯誤'
@@ -124,49 +135,33 @@ const rules = {
   }
 }
 
-function startComputing (id) {
-  progress.value[id].loading = true
-  progress.value[id].percentage = 0
-
-  intervals[id] = setInterval(() => {
-    progress.value[id].percentage += Math.floor(Math.random() * 8 + 10)
-    if (progress.value[id].percentage >= 100) {
-      clearInterval(intervals[id])
-      progress.value[id].loading = false
-    }
-  }, 700)
+const onSubmit = async () => {
+  // 如果驗證失敗
+  loading.value = true
+  try {
+    console.log('成功')
+    await api.post('/users', form)
+    Swal.fire({
+      icon: 'success',
+      title: '成功',
+      text: '註冊成功'
+    })
+    router.push('/vip')
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: error?.response?.data?.message || '發生錯誤'
+    })
+  }
+  loading.value = false
 }
 
-onBeforeUnmount(() => {
-  intervals.forEach(val => {
-    clearInterval(val)
-  })
-})
-
-// const onSubmit = async () => {
-//   // 如果驗證失敗
-//   if (!valid.value) return
-//   loading.value = true
-//   try {
-//     // await api.post('/users', form)
-//     await Swal.fire({
-//       icon: 'success',
-//       title: '成功',
-//       text: '註冊成功'
-//     })
-//     router.push('/')
-//   } catch (error) {
-//     Swal.fire({
-//       icon: 'error',
-//       title: '失敗',
-//       text: error?.response?.data?.message || '發生錯誤'
-//     })
-//   }
-//   loading.value = false
-// }
 </script>
 
-<style>
+<style lang="scss">
+  @import '../css/register.scss';
+
 .bg {
   backdrop-filter: blur(10px);
 }
