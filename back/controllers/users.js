@@ -1,6 +1,6 @@
 import users from '../models/users.js'
 // import products from '../models/products.js'
-// import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 export const register = async (req, res) => {
   try {
@@ -25,65 +25,69 @@ export const register = async (req, res) => {
   }
 }
 
-// export const login = async (req, res) => {
-//   try {
-//     const token = jwt.sign({ _id: req.user._id }, process.env.JWT_SECRET, { expiresIn: '7 days' })
-//     req.user.tokens.push(token)
-//     await req.user.save()
-//     res.status(200).json({
-//       success: true,
-//       message: '',
-//       result: {
-//         token,
-//         account: req.user.account,
-//         email: req.user.email,
-//         cart: req.user.cart.reduce((total, current) => total + current.quantity, 0),
-//         role: req.user.role
-//       }
-//     })
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: '未知錯誤' })
-//   }
-// }
+export const login = async (req, res) => {
+  try {
+    const token = jwt.sign({ _id: req.user._id }, process.env.JWT_SECRET, { expiresIn: '7 days' })
+    req.user.tokens.push(token)
+    await req.user.save()
+    res.status(200).json({
+      success: true,
+      message: '',
+      result: {
+        token,
+        account: req.user.account,
+        email: req.user.email,
+        cart: req.user.cart.length, // .reduce((total, current) => total + current.quantity, 0),
+        role: req.user.role
+      }
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: '88未知錯誤' })
+  }
+}
 
-// export const logout = async (req, res) => {
-//   try {
-//     req.user.tokens = req.user.tokens.filter(token => token !== req.token)
-//     await req.user.save()
-//     res.status(200).json({ success: true, message: '' })
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: '未知錯誤' })
-//   }
-// }
+export const logout = async (req, res) => {
+  try {
+    // 符合這個判斷 token !== req.token 會留著
+    req.user.tokens = req.user.tokens.filter(token => token !== req.token)
+    await req.user.save()
+    res.status(200).json({ success: true, message: '' })
+  } catch (error) {
+    res.status(500).json({ success: false, message: '未知錯誤' })
+  }
+}
 
-// export const extend = async (req, res) => {
-//   try {
-//     const idx = req.user.tokens.findIndex(token => token === req.token)
-//     const token = jwt.sign({ _id: req.user._id }, process.env.JWT_SECRET, { expiresIn: '7 days' })
-//     req.user.tokens[idx] = token
-//     await req.user.save()
-//     res.status(200).json({ success: true, message: '', result: token })
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: '未知錯誤' })
-//   }
-// }
+// 現在的jwt是陣列裡的第幾個，拿出來，假設是第一個，把它取出來，換掉然後保存
+export const extend = async (req, res) => {
+  try {
+    const idx = req.user.tokens.findIndex(token => token === req.token)
+    const token = jwt.sign({ _id: req.user._id }, process.env.JWT_SECRET, { expiresIn: '7 days' })
+    req.user.tokens[idx] = token
+    await req.user.save()
+    res.status(200).json({ success: true, message: '', result: token })
+  } catch (error) {
+    res.status(500).json({ success: false, message: '未知錯誤' })
+  }
+}
 
-// export const getUser = (req, res) => {
-//   try {
-//     res.status(200).json({
-//       success: true,
-//       message: '',
-//       result: {
-//         account: req.user.account,
-//         email: req.user.email,
-//         cart: req.user.cart.reduce((total, current) => total + current.quantity, 0),
-//         role: req.user.role
-//       }
-//     })
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: '未知錯誤' })
-//   }
-// }
+// 登錄之後，前台只會存jwt資料，然後前台再請求到後台抓資料
+export const getUser = (req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      message: '',
+      result: {
+        account: req.user.account,
+        email: req.user.email,
+        cart: req.user.cart.length, // .reduce((total, current) => total + current.quantity, 0),
+        role: req.user.role
+      }
+    })
+  } catch (error) {
+    res.status(500).json({ success: false, message: '未知錯誤' })
+  }
+}
 
 // export const editCart = async (req, res) => {
 //   try {

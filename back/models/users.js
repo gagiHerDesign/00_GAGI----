@@ -29,7 +29,7 @@ const schema = new Schema({
   },
   email: {
     type: String,
-    default: []
+    default: ''
     // required: [true, '缺少信箱'],
     // unique: true,
     // validate: {
@@ -41,11 +41,11 @@ const schema = new Schema({
   },
   address: {
     type: String,
-    default: []
+    default: ''
   },
   phone: {
     type: String,
-    default: []
+    default: ''
   },
   gender: {
     type: Number,
@@ -55,7 +55,7 @@ const schema = new Schema({
   },
   birth: {
     type: String,
-    default: []
+    default: ''
   },
   tokens: {
     type: [String],

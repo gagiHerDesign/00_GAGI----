@@ -5,7 +5,7 @@ import cors from 'cors'
 import userRoute from './routes/users.js'
 // import productRoute from './routes/products.js'
 // import orderRoute from './routes/orders.js'
-// import './passport/passport.js'
+import './passport/passport.js'
 
 mongoose.connect(process.env.DB_URL)
 mongoose.set('sanitizeFilter', true)

@@ -38,7 +38,7 @@
         <q-btn flat round color="primary" icon="close" v-close-popup></q-btn>
       </div>
       <h2>Create Account</h2>
-      <q-form @submit="onSubmit" class="q-gutter-md">
+      <q-form @submit="subRegister" class="q-gutter-md">
         <!-- 帳號 -->
         <q-input filled v-model="form.account" label="Your account *" :rules="[rules.required, rules.length]" counter
           maxlength="20"></q-input>
@@ -51,9 +51,9 @@
 
         <div class="text-center" style="margin-top: 3rem;">
           <!-- 註冊 -->
-          <q-btn label="REGISTER" type="submit" :loading="loading" color="secondary" style="width: 100%; padding: 1rem; font-weight: 300;"/>
+          <q-btn label="註冊" type="submit" :loading="loading" color="secondary" style="width: 100%; padding: 1rem; font-weight: 300;"/>
 
-          <q-btn flat style="color: lightslategrey; font-weight: 300; margin-top: 1rem;" @click="openRegisterModal = false;openLoginModal = true" label="Already have an sushi account?" />
+          <q-btn flat style="color: lightslategrey; font-weight: 300; margin-top: 1rem;" @click="openRegisterModal = false;openLoginModal = true" label="已經有 sushi 會員?" />
         </div>
       </q-form>
 
@@ -61,24 +61,25 @@
   </div>
       </q-dialog>
       <!-- 登入視窗 -->
-      <q-dialog v-model="openLoginModal">
+      <q-dialog v-model="openLoginModal" >
         <div id="q-app" style="min-height: 50vh; background: #fff; margin: auto;">
           <div class="q-mx-auto q-py-lg" style="max-width: 500px">
             <div class="btn_submit" align="right">
               <q-btn flat round color="primary" icon="close" v-close-popup></q-btn>
             </div>
-            <h2>Login</h2>
-            <q-form @submit="onSubmit" class="q-gutter-md">
+            <h4 style="font-weight: 600;">會員登入</h4>
+            <q-form @submit="subLogin" class="q-gutter-md">
               <!-- 帳號 -->
-              <q-input filled v-model="form.account" label="Your account *"
+              <q-input filled v-model="formLog.account" label="Your account *"
                 :rules="[rules.required, rules.length]" counter maxlength="20"></q-input>
               <!-- 密碼 -->
-              <q-input filled v-model="form.password" label="Your password *" :rules="[rules.required, rules.length]" counter maxlength="20"></q-input>
+              <q-input filled v-model="formLog.password" label="Your password *" :rules="[rules.required, rules.length]" counter maxlength="20"></q-input>
             <div>
                 <!-- 登入 -->
-                <q-btn style="width: 100%; padding: 1rem; font-weight: 300;" label="LOGIN" type="submit" :loading="loading" color="secondary" />
-                <p style="font-weight: 300; font-size: 20px; margin-top: 2rem;" >New to sushi ?</p>
-                <q-btn outline style="color: lightslategrey; font-weight: 300; margin-top: 1rem; width: 100%;" @click="openRegisterModal = true;openLoginModal = false" label="Create Account" type="submit" :loading="loading" color="secondary" />
+                <q-btn style="width: 100%; padding: 1rem; font-weight: 300;" label="登入" type="submit" :loading="loading" color="secondary" icon="arrow_forward"/>
+                <p style="font-weight: 600; font-size: 20px; margin-top: 2rem;" > 第一次來sushi?</p>
+                <p style="font-weight: 300; font-size: 15px;" > 立即註冊享有更多優惠</p>
+                <q-btn outline style="color: lightslategrey; font-weight: 300; margin-top: 1rem; width: 100%;padding: 1rem;" @click="openRegisterModal = true;openLoginModal = false" label="註冊新會員" type="submit" :loading="loading" color="secondary" />
               </div>
             </q-form>
 
@@ -103,21 +104,26 @@
 import { ref, reactive } from 'vue'
 import validator from 'validator'
 import Swal from 'sweetalert2'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 import { api } from '../boot/axios'
-const tab = ref('')
+import { useUserStore } from '../stores/user.js'
 
-// const $q = useQuasar()
-const router = useRouter()
+const tab = ref('')
+// const router = useRouter()
 const loading = ref(false)
 const openRegisterModal = ref(false)
 const openLoginModal = ref(false)
+const user = useUserStore()
 
 const form = reactive({
   account: '',
   password: '',
   passwordConfirm: ''
   // email: ''
+})
+const formLog = reactive({
+  account: '',
+  password: ''
 })
 const rules = {
   email (value) {
@@ -135,18 +141,17 @@ const rules = {
   }
 }
 
-const onSubmit = async () => {
+const subRegister = async () => {
   // 如果驗證失敗
   loading.value = true
   try {
-    console.log('成功')
     await api.post('/users', form)
     Swal.fire({
       icon: 'success',
       title: '成功',
       text: '註冊成功'
     })
-    router.push('/vip')
+    openRegisterModal.value = false
   } catch (error) {
     Swal.fire({
       icon: 'error',
@@ -155,6 +160,13 @@ const onSubmit = async () => {
     })
   }
   loading.value = false
+}
+
+const subLogin = async () => {
+  loading.value = true
+  await user.login(formLog)
+  loading.value = false
+  openLoginModal.value = false
 }
 
 </script>
