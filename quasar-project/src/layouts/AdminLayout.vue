@@ -1,70 +1,98 @@
 <template>
-      <q-layout view="hHh Lpr lff" class="shadow-2">
-      <q-header elevated class="bg-black">
-        <q-toolbar>
-          <q-btn flat round dense icon="menu" />
-          <q-toolbar-title>Header</q-toolbar-title>
-        </q-toolbar>
-      </q-header>
+  <q-layout view="lHh Lpr lff" style="background: #F6F1EB">
+    <q-header elevated class="bg-transparent">
+      <q-toolbar>
+        <q-toolbar-title class="text-center">
+        </q-toolbar-title>
+        <q-btn flat round dense icon="account_circle" class="q-mr-sm text-primary">
+          <q-menu>
+            <q-list style="min-width: 100px">
+              <q-item clickable v-close-popup v-if="!isLogin" @click="openLoginModal = true">
+                <q-item-section>登入/註冊</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup v-if="isLogin" @click="logout">
+                <q-item-section>登出</q-item-section>
+              </q-item>
+              <q-separator />
+              <q-item clickable v-close-popup v-if="isLogin" to="/vip">
+                <q-item-section>會員中心</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup v-if="isAdmin" to="/admin">
+                <q-item-section>管理者中心</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
+      </q-toolbar>
+    </q-header>
 
-      <q-drawer
-        v-model="drawer"
-        show-if-above
-        :width="200"
-        :breakpoint="500"
-      >
-        <q-scroll-area class="fit">
-          <q-list padding class="menu-list">
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="inbox" />
-              </q-item-section>
+    <q-drawer v-model="drawer" show-if-above :width="250" :breakpoint="500">
+      <q-scroll-area class="fit">
+        <q-list padding class="menu-list">
 
-              <q-item-section>
-                Inbox
-              </q-item-section>
-            </q-item>
+          <q-btn flat>
+            <q-avatar size="150px">
+              <img src="../assets/img/logo/logo.svg">
+            </q-avatar>
+          </q-btn>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="inbox" />
+            </q-item-section>
 
-            <q-item active clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="star" />
-              </q-item-section>
+            <q-item-section>
+              首頁資訊
+            </q-item-section>
+          </q-item>
 
-              <q-item-section>
-                Star
-              </q-item-section>
-            </q-item>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="star" />
+            </q-item-section>
 
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="send" />
-              </q-item-section>
+            <q-item-section>
+              商品管理
+            </q-item-section>
+          </q-item>
 
-              <q-item-section>
-                Send
-              </q-item-section>
-            </q-item>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="send" />
+            </q-item-section>
 
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="drafts" />
-              </q-item-section>
+            <q-item-section>
+              訂單管理
+            </q-item-section>
+          </q-item>
 
-              <q-item-section>
-                Drafts
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-scroll-area>
-      </q-drawer>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="drafts" />
+            </q-item-section>
 
-      <q-page-container>
+            <q-item-section>
+              會員管理
+            </q-item-section>
+          </q-item>
 
-      </q-page-container>
-      <q-page-container>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="nature" />
+            </q-item-section>
+
+            <q-item-section>
+              茶樹狀態
+            </q-item-section>
+
+          </q-item>
+        </q-list>
+      </q-scroll-area>
+    </q-drawer>
+
+    <q-page-container style="">
       <router-view />
     </q-page-container>
-    </q-layout>
+  </q-layout>
 
 </template>
 
@@ -75,7 +103,14 @@ const drawer = ref(false)
 
 </script>
 
-<style lang="sass" scoped>
-.menu-list .q-item
-  border-radius: 0 32px 32px 0
+<style lang="scss">
+@import '../css/register.scss';
+
+.menu-list .q-item {
+  border-radius: 0 32px 32px 0;
+}
+
+.q-header .q-layout__shadow:after {
+  bottom: 0;
+}
 </style>

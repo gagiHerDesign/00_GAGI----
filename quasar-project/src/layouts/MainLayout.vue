@@ -9,8 +9,28 @@
           <q-btn flat round dense icon="menu" class="q-mr-sm"></q-btn>
           sushi
         </q-toolbar-title>
-        <q-btn flat round dense icon="shopping_cart" class="q-mr-sm"></q-btn>
-        <q-btn flat round dense icon="account_circle" class="q-mr-sm" @click="openLoginModal= true"></q-btn>
+        <q-btn flat round dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/vip/cart">
+          <q-badge :content="cart" rounded floating color="accent" label="0"/>購物車
+        </q-btn>
+        <q-btn flat round dense icon="account_circle" class="q-mr-sm">
+          <q-menu>
+          <q-list style="min-width: 100px">
+              <q-item clickable v-close-popup v-if="!isLogin" @click="openLoginModal= true">
+              <q-item-section>登入/註冊</q-item-section>
+            </q-item>
+            <q-item clickable v-close-popup v-if="isLogin" @click="logout">
+              <q-item-section>登出</q-item-section>
+            </q-item>
+            <q-separator />
+            <q-item clickable v-close-popup v-if="isLogin" to="/vip">
+              <q-item-section>會員中心</q-item-section>
+            </q-item>
+            <q-item clickable v-close-popup v-if="isAdmin" to="/admin">
+              <q-item-section>管理者中心</q-item-section>
+            </q-item>
+          </q-list>
+        </q-menu>
+        </q-btn>
       </q-toolbar>
       <!-- 第二行 -->
       <q-toolbar>
@@ -32,7 +52,7 @@
       <!-- 彈出視窗 -->
       <!-- 註冊視窗 -->
       <q-dialog v-model="openRegisterModal" persistent>
-        <div id="q-app" style="min-height: 50vh; background: #fff; margin: auto;">
+        <div id="q-app" style="min-height: 50vh; background: #FFFEF2; margin: auto;">
     <div class="q-mx-auto q-py-lg" style="max-width: 500px">
       <div class="btn_submit" align="right">
         <q-btn flat round color="primary" icon="close" v-close-popup></q-btn>
@@ -61,9 +81,9 @@
   </div>
       </q-dialog>
       <!-- 登入視窗 -->
-      <q-dialog v-model="openLoginModal" >
-        <div id="q-app" style="min-height: 50vh; background: #fff; margin: auto;">
-          <div class="q-mx-auto q-py-lg" style="max-width: 500px">
+      <q-dialog v-model="openLoginModal" persistent>
+        <div id="q-app" style="min-height: 50vh; background: #FFFEF2; margin: auto;">
+          <div class=" q-py-lg" style="max-width: 500px; margin-left: 2rem;margin-right: 2rem;">
             <div class="btn_submit" align="right">
               <q-btn flat round color="primary" icon="close" v-close-popup></q-btn>
             </div>
@@ -107,6 +127,7 @@ import Swal from 'sweetalert2'
 // import { useRouter } from 'vue-router'
 import { api } from '../boot/axios'
 import { useUserStore } from '../stores/user.js'
+import { storeToRefs } from 'pinia'
 
 const tab = ref('')
 // const router = useRouter()
@@ -114,6 +135,8 @@ const loading = ref(false)
 const openRegisterModal = ref(false)
 const openLoginModal = ref(false)
 const user = useUserStore()
+const { isLogin, isAdmin, cart } = storeToRefs(user)
+const { logout } = user
 
 const form = reactive({
   account: '',
@@ -181,4 +204,5 @@ const subLogin = async () => {
 .q-header .q-layout__shadow:after {
   bottom: 0;
 }
+
 </style>

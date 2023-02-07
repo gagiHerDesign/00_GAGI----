@@ -42,8 +42,7 @@ export const login = async (req, res) => {
       }
     })
   } catch (error) {
-    console.log(error)
-    res.status(500).json({ success: false, message: '88未知錯誤' })
+    res.status(500).json({ success: false, message: '未知錯誤' })
   }
 }
 

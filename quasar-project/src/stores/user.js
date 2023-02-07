@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { api } from '../boot/axios.js'
+import { api, apiAuth } from '../boot/axios.js'
 import Swal from 'sweetalert2'
 import router from '../router/routes'
 
@@ -42,8 +42,34 @@ export const useUserStore = defineStore('user', () => {
       })
     }
   }
+  const logout = async () => {
+    try {
+      await apiAuth.delete('/users/logout')
+      token.value = ''
+      account.value = ''
+      role.value = 0
+      cart.value = 0
+      router.push('/vip')
+      Swal.fire({
+        icon: 'success',
+        title: '成功',
+        text: '登出成功'
+      })
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: '失敗',
+        text: error?.response?.data?.message || '發生錯誤'
+      })
+    }
+  }
 
   return {
-    token, account, email, cart, role, login, isLogin, isAdmin, avatar
+    token, account, email, cart, role, login, isLogin, isAdmin, avatar, logout
+  }
+}, {
+  persist: {
+    key: '230203',
+    paths: ['token']
   }
 })

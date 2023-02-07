@@ -1,5 +1,6 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
+import { useUserStore } from '../stores/user.js'
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -8,8 +9,15 @@ import axios from 'axios'
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({ baseURL: process.env.VITE_API })
+const apiAuth = axios.create({ baseURL: import.meta.env.VITE_API })
 
 console.log(process.env.VITE_API)
+
+apiAuth.interceptors.request.use(config => {
+  const user = useUserStore()
+  config.headers.authorization = 'Bearer ' + user.token
+  return config
+})
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
@@ -23,4 +31,4 @@ export default boot(({ app }) => {
   //       so you can easily perform requests against your app's API
 })
 
-export { api }
+export { api, apiAuth }
