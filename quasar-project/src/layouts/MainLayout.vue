@@ -6,10 +6,13 @@
       <!-- 第一行 -->
       <q-toolbar>
         <q-toolbar-title class="text-center">
-          <q-btn flat round dense icon="menu" class="q-mr-sm"></q-btn>
-          sushi
+          <q-btn flat class="q-mr-sm" to="/">
+
+              <img style="height: 40px;" src="../assets/img/logo/logo-front.svg">
+
+          </q-btn>
         </q-toolbar-title>
-        <q-btn flat round dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/vip/cart">
+        <q-btn flat round dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/cart">
           <q-badge :content="cart" rounded floating color="accent" label="0"/>購物車
         </q-btn>
         <q-btn flat round dense icon="account_circle" class="q-mr-sm">
@@ -25,7 +28,7 @@
             <q-item clickable v-close-popup v-if="isLogin" to="/vip">
               <q-item-section>會員中心</q-item-section>
             </q-item>
-            <q-item clickable v-close-popup v-if="isAdmin" to="/admin">
+            <q-item clickable v-close-popup v-if="isAdmin&&isLogin" to="/admin">
               <q-item-section>管理者中心</q-item-section>
             </q-item>
           </q-list>
@@ -35,11 +38,9 @@
       <!-- 第二行 -->
       <q-toolbar>
         <q-toolbar-title class="text-center">
-          <q-tabs v-model="tab">
-            <q-tab name="images" label="最新消息" />
-            <q-tab name="videos" label="品牌理念" />
-            <q-tab name="articles" label="產品系列" />
-          </q-tabs>
+          <q-btn label="最新消息" to="/"></q-btn>
+          <q-btn label="品牌理念" to="/story"></q-btn>
+          <q-btn label="產品系列" to="/products"></q-btn>
         </q-toolbar-title>
 
       </q-toolbar>
@@ -66,14 +67,14 @@
         <q-input filled v-model="form.password" label="Your password *" :rules="[rules.required, rules.length]" counter
           maxlength="20"></q-input>
         <!-- 確認密碼 -->
-        <q-input filled v-model="form.passwordConfirm" label="Comfirm Your password *" :rules="[rules.required, rules.length]"
+        <q-input filled v-model="form.passwordConfirm" label="Confirm Your password *" :rules="[rules.required, rules.length]"
           counter maxlength="20"></q-input>
 
         <div class="text-center" style="margin-top: 3rem;">
           <!-- 註冊 -->
           <q-btn label="註冊" type="submit" :loading="loading" color="secondary" style="width: 100%; padding: 1rem; font-weight: 300;"/>
 
-          <q-btn flat style="color: lightslategrey; font-weight: 300; margin-top: 1rem;" @click="openRegisterModal = false;openLoginModal = true" label="已經有 sushi 會員?" />
+          <q-btn flat style="color: lightslategrey; font-weight: 300; margin-top: 1rem;" @click="openRegisterModal = false;openLoginModal = true" label="已經有 susi 會員?" />
         </div>
       </q-form>
 
@@ -129,7 +130,6 @@ import { api } from '../boot/axios'
 import { useUserStore } from '../stores/user.js'
 import { storeToRefs } from 'pinia'
 
-const tab = ref('')
 // const router = useRouter()
 const loading = ref(false)
 const openRegisterModal = ref(false)

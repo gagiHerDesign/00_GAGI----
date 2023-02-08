@@ -1,4 +1,3 @@
-
 const routes = [
   {
     path: '/',
@@ -6,47 +5,42 @@ const routes = [
     children: [
       {
         path: '',
-        name: '00',
-        component: () => import('src/pages/front/IndexPage.vue')
-      },
-      {
-        path: 'login',
-        name: 'login',
-        component: () => import('src/pages/front/LoginPage.vue'),
+        name: '',
+        component: () => import('src/pages/front/IndexPage.vue'),
         meta: {
-          title: '購物網 | 登入'
+          title: '購物網',
+          login: false,
+          admin: false
         }
       },
       {
-        path: 'register',
-        name: 'register',
-        component: () => import('src/pages/front/RegisterPage.vue'),
-        meta: {
-          title: '購物網 | 註冊'
-        }
-      },
-      {
-        path: 'story',
+        path: '/story',
         name: 'story',
         component: () => import('src/pages/front/StoryPage.vue'),
         meta: {
-          title: '購物網 | 品牌理念'
+          title: '購物網 | 品牌理念',
+          login: false,
+          admin: false
         }
       },
       {
-        path: 'product',
-        name: 'product',
+        path: '/products',
+        name: 'products',
         component: () => import('src/pages/front/ProductPage.vue'),
         meta: {
-          title: '購物網 | 商品總覽'
+          title: '購物網 | 商品總覽',
+          login: false,
+          admin: false
         }
       },
       {
-        path: 'cart',
+        path: '/cart',
         name: 'cart',
         component: () => import('src/pages/front/CartPage.vue'),
         meta: {
-          title: '購物網 | 購物車'
+          title: '購物網 | 購物車',
+          login: true,
+          admin: false
         }
       }
 
@@ -58,28 +52,53 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'home',
-        component: () => import('src/pages/admin/AdminHome.vue')
+        name: '',
+        component: () => import('src/pages/admin/AdminHome.vue'),
+        meta: {
+          title: '管理中心 | 首頁',
+          login: true,
+          admin: true
+        }
       },
       {
-        path: 'member',
-        name: 'member',
-        component: () => import('src/pages/admin/AdminMember.vue')
+        path: '/admin/member',
+        name: '/admin/member',
+        component: () => import('src/pages/admin/AdminMember.vue'),
+        meta: {
+          title: '管理中心 | 會員管理',
+          login: true,
+          admin: true
+        }
       },
       {
-        path: 'order',
-        name: 'order',
-        component: () => import('src/pages/admin/AdminOrder.vue')
+        path: '/admin/order',
+        name: '/admin/order',
+        component: () => import('src/pages/admin/AdminOrder.vue'),
+        meta: {
+          title: '管理中心 | 訂單管理',
+          login: true,
+          admin: true
+        }
       },
       {
-        path: 'plant',
-        name: 'plant',
-        component: () => import('src/pages/admin/AdminPlant.vue')
+        path: '/admin/plant',
+        name: '/admin/plant',
+        component: () => import('src/pages/admin/AdminPlant.vue'),
+        meta: {
+          title: '管理中心 | 茶樹狀態',
+          login: true,
+          admin: true
+        }
       },
       {
-        path: 'product',
-        name: 'product',
-        component: () => import('src/pages/admin/AdminProduct.vue')
+        path: '/admin/product',
+        name: '/admin/products',
+        component: () => import('src/pages/admin/AdminProduct.vue'),
+        meta: {
+          title: '管理中心 | 商品管理',
+          login: true,
+          admin: true
+        }
       }
     ]
 
@@ -91,27 +110,42 @@ const routes = [
       {
         path: '',
         name: 'home',
-        component: () => import('src/pages/vip/VipHome.vue')
+        component: () => import('src/pages/vip/VipHome.vue'),
+        meta: {
+          title: '會員中心 | 首頁',
+          login: true,
+          admin: false
+        }
       },
       {
-        path: 'cart',
-        name: 'cart',
-        component: () => import('src/pages/vip/VipCart.vue')
-      },
-      {
-        path: 'member',
+        path: '/vip/member',
         name: 'member',
-        component: () => import('src/pages/vip/VipMember.vue')
+        component: () => import('src/pages/vip/VipMember.vue'),
+        meta: {
+          title: '會員中心 | 會員資料',
+          login: true,
+          admin: false
+        }
       },
       {
-        path: 'order',
+        path: '/vip/order',
         name: 'order',
-        component: () => import('src/pages/vip/VipOrder.vue')
+        component: () => import('src/pages/vip/VipOrder.vue'),
+        meta: {
+          title: '會員中心 | 訂單紀錄',
+          login: true,
+          admin: false
+        }
       },
       {
-        path: 'plant',
+        path: '/vip/plant',
         name: 'plant',
-        component: () => import('src/pages/vip/VipPlant.vue')
+        component: () => import('src/pages/vip/VipPlant.vue'),
+        meta: {
+          title: '會員中心 | 茶樹狀態',
+          login: true,
+          admin: false
+        }
       }
     ]
   },

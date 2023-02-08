@@ -1,4 +1,5 @@
 import { route } from 'quasar/wrappers'
+import { useUserStore } from 'src/stores/user'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
 
@@ -11,12 +12,12 @@ import routes from './routes'
  * with the Router instance.
  */
 
-export default route(function (/* { store, ssrContext } */) {
+export default route(async function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
     : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
 
-  // await useCounterStore().getUser()
+  await useUserStore().getUser()
 
   const Router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
@@ -28,22 +29,23 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
 
-  // Router.afterEach((to, from) => {
-  //   document.title = to.meta.title
-  // })
+  Router.afterEach((to, from) => {
+    document.title = to.meta.title
+  })
 
-  // Router.beforeEach(async (to, from, next) => {
-  //   const user = useCounterStore()
-  //   if (user.isLogin && (to.path === '/register' || to.path === '/login')) {
-  //     next('/')
-  //   } else if (to.meta.login && !user.isLogin) {
-  //     next('/login')
-  //   } else if (to.meta.admin && !user.isAdmin) {
-  //     next('/')
-  //   } else {
-  //     next()
-  //   }
-  // })
+  Router.beforeEach(async (to, from, next) => {
+    const user = useUserStore()
+
+    if (user.isLogin && (to.path === '/register' || to.path === '/login')) {
+      next('/')
+    } else if (to.meta.login && !user.isLogin) {
+      next('/')
+    } else if (to.meta.admin && !user.isAdmin) {
+      next('/')
+    } else {
+      next()
+    }
+  })
 
   return Router
 })

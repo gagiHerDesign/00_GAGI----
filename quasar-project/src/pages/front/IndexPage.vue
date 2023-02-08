@@ -4,6 +4,7 @@
       src="https://m.media-amazon.com/images/S/aplus-media/sota/cad9efa1-99bb-40cb-a4b5-f488632f5be2.__CR0,0,1464,600_PT0_SX1464_V1___.jpg"
       alt="">
     <p>我是首頁</p>
+    <img src="../../assets/img/front/photo-1588979355313-6711a095465f.jpeg" alt="">
     <p v-for="n in 55" :key="n">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci, dolore
       vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus commodi perferendis

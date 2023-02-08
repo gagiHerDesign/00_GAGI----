@@ -17,7 +17,7 @@ export const useUserStore = defineStore('user', () => {
   const isAdmin = computed(() => {
     return role.value === 1
   })
-  const avatar = computed(() => {
+  const avatars = computed(() => {
     return `https://source.boringavatars.com/beam/256/${account.value}?colors=BABA9D,303030,FFBEBE,FFFDB8,E1EEE4`
   })
   const login = async (form) => {
@@ -63,9 +63,21 @@ export const useUserStore = defineStore('user', () => {
       })
     }
   }
+  const getUser = async () => {
+    if (token.value.length === 0) return
+    try {
+      const { data } = await apiAuth.get('/users/me')
+      account.value = data.result.account
+      email.value = data.result.email
+      cart.value = data.result.cart
+      role.value = data.result.role
+    } catch (error) {
+      logout()
+    }
+  }
 
   return {
-    token, account, email, cart, role, login, isLogin, isAdmin, avatar, logout
+    token, account, email, cart, role, login, isLogin, isAdmin, avatars, logout, getUser
   }
 }, {
   persist: {

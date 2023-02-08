@@ -7,17 +7,15 @@
         <q-btn flat round dense icon="account_circle" class="q-mr-sm text-primary">
           <q-menu>
             <q-list style="min-width: 100px">
-              <q-item clickable v-close-popup v-if="!isLogin" @click="openLoginModal = true">
-                <q-item-section>登入/註冊</q-item-section>
-              </q-item>
-              <q-item clickable v-close-popup v-if="isLogin" @click="logout">
+
+              <q-item clickable v-close-popup v-if="isLogin" @click="logout" to="/">
                 <q-item-section>登出</q-item-section>
               </q-item>
               <q-separator />
               <q-item clickable v-close-popup v-if="isLogin" to="/vip">
                 <q-item-section>會員中心</q-item-section>
               </q-item>
-              <q-item clickable v-close-popup v-if="isAdmin" to="/admin">
+              <q-item clickable v-close-popup v-if="isAdmin&&isLogin" to="/admin">
                 <q-item-section>管理者中心</q-item-section>
               </q-item>
             </q-list>
@@ -30,12 +28,12 @@
       <q-scroll-area class="fit">
         <q-list padding class="menu-list">
 
-          <q-btn flat>
+          <q-btn flat to="/">
             <q-avatar size="150px">
               <img src="../assets/img/logo/logo.svg">
             </q-avatar>
           </q-btn>
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple to="/admin">
             <q-item-section avatar>
               <q-icon name="inbox" />
             </q-item-section>
@@ -45,7 +43,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple to="/admin/product">
             <q-item-section avatar>
               <q-icon name="star" />
             </q-item-section>
@@ -55,7 +53,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple to="/admin/order">
             <q-item-section avatar>
               <q-icon name="send" />
             </q-item-section>
@@ -65,7 +63,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple to="/admin/member">
             <q-item-section avatar>
               <q-icon name="drafts" />
             </q-item-section>
@@ -75,7 +73,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple to="/admin/plant">
             <q-item-section avatar>
               <q-icon name="nature" />
             </q-item-section>
@@ -89,7 +87,7 @@
       </q-scroll-area>
     </q-drawer>
 
-    <q-page-container style="">
+    <q-page-container>
       <router-view />
     </q-page-container>
   </q-layout>
@@ -98,8 +96,13 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useUserStore } from '../stores/user.js'
+import { storeToRefs } from 'pinia'
 
 const drawer = ref(false)
+const user = useUserStore()
+const { isLogin, isAdmin } = storeToRefs(user)
+const { logout } = user
 
 </script>
 

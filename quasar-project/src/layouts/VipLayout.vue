@@ -1,31 +1,113 @@
 <template>
-    <q-layout view="lHh lpr lFf" class="shadow-2 rounded-borders">
-      <q-header reveal elevated>
-        <q-toolbar>
-          <q-btn flat round dense icon="menu" class="q-mr-sm"></q-btn>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
+  <q-layout view="lHh Lpr lff" style="background: #F6F1EB">
+    <q-header elevated class="bg-transparent">
+      <q-toolbar>
+        <q-toolbar-title class="text-center">
+        </q-toolbar-title>
+        <q-item style="color: #000;">{{ account }}，歡迎回來! </q-item>
+        <q-btn flat round dense :icon="menu" class="q-mr-sm text-primary">
+          <img :src="avatars" style="width: 50px;">
+          <q-menu>
+            <q-list style="min-width: 100px">
+              <q-item clickable v-close-popup v-if="!isLogin" @click="openLoginModal = true">
+                <q-item-section>登入/註冊</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup v-if="isLogin" @click="logout" to="/">
+                <q-item-section>登出</q-item-section>
+              </q-item>
+              <q-separator />
+              <q-item clickable v-close-popup v-if="isLogin" to="/vip">
+                <q-item-section>會員中心</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup v-if="isAdmin&&isAdmin" to="/admin">
+                <q-item-section>管理者中心</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
+      </q-toolbar>
+    </q-header>
 
-          <q-toolbar-title>Quasar Framework</q-toolbar-title>
+    <q-drawer v-model="drawer" show-if-above :width="250" :breakpoint="500">
+      <q-scroll-area class="fit">
+        <q-list padding class="menu-list">
 
-          <q-btn flat round dense icon="whatshot"></q-btn>
-        </q-toolbar>
-      </q-header>
+          <q-btn flat to="/">
+            <q-avatar size="150px">
+              <img src="../assets/img/logo/logo.svg">
+            </q-avatar>
+          </q-btn>
+          <q-item clickable v-ripple to="/vip">
+            <q-item-section avatar>
+              <q-icon name="inbox" />
+            </q-item-section>
 
-      <q-page-container>
-        <q-page class="q-pa-md">
-          <p v-for="n in 15" :key="n">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci, dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus commodi perferendis voluptate?
-          </p>
-        </q-page>
-        <router-view />
-      </q-page-container>
+            <q-item-section>
+              首頁資訊
+            </q-item-section>
+          </q-item>
 
-    <q-toolbar class="bg-primary">
-      <q-toolbar-title>你好/我是Footer</q-toolbar-title>
-    </q-toolbar>
+          <q-item clickable v-ripple to="/vip/order">
+            <q-item-section avatar>
+              <q-icon name="star" />
+            </q-item-section>
 
-    </q-layout>
+            <q-item-section>
+              訂單紀錄
+            </q-item-section>
+          </q-item>
 
- </template>
+          <q-item clickable v-ripple to="/vip/member">
+            <q-item-section avatar>
+              <q-icon name="drafts" />
+            </q-item-section>
+
+            <q-item-section>
+              會員中心
+            </q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple to="/vip/plant">
+            <q-item-section avatar>
+              <q-icon name="nature" />
+            </q-item-section>
+
+            <q-item-section>
+              茶樹狀態
+            </q-item-section>
+
+          </q-item>
+        </q-list>
+      </q-scroll-area>
+    </q-drawer>
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+  </q-layout>
+
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { useUserStore } from '../stores/user.js'
+import { storeToRefs } from 'pinia'
+
+const drawer = ref(false)
+const user = useUserStore()
+const { isLogin, isAdmin, avatars, account } = storeToRefs(user)
+const { logout } = user
+
+</script>
+
+<style lang="scss">
+@import '../css/register.scss';
+
+.menu-list .q-item {
+  border-radius: 0 32px 32px 0;
+}
+
+.q-header .q-layout__shadow:after {
+  bottom: 0;
+}
+</style>

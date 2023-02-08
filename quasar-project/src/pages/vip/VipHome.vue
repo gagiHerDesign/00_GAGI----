@@ -1,18 +1,18 @@
 <template>
-  <h1>消費者首頁</h1>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+  <q-page class="bg text-center">
+    <h6 style="font-weight: 600;">消費者首頁</h6>
+    <img src="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80" alt="">
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
 
-export default defineComponent({
-  name: 'IndexPage'
-})
 </script>
+
+<style lang="scss">
+.bg {
+  background: #F6F1EB;
+  padding-top: -10rem;
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+</style>
