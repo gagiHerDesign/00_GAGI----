@@ -11,6 +11,7 @@ cloudinary.config({
 const upload = multer({
   storage: new CloudinaryStorage({ cloudinary }),
   fileFilter (req, file, cb) {
+    // 如果檔案格式錯誤，回傳錯誤訊息
     if (!file.mimetype.startsWith('image')) {
       cb(new multer.MulterError('LIMIT_FILE_FORMAT'), false)
     } else {

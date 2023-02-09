@@ -1,3 +1,12 @@
 .swal2-container {
   z-index: 8500
 }
+.cancel{
+  color: rgb(255, 255, 255);
+  position: fixed;
+  top: 26%;
+  left: 62%;
+  transform: translate(50%, -50%);
+  z-index: 9000;
+  cursor: pointer;
+}

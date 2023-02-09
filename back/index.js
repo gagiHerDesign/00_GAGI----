@@ -3,7 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import userRoute from './routes/users.js'
-// import productRoute from './routes/products.js'
+import productRoute from './routes/products.js'
 // import orderRoute from './routes/orders.js'
 import './passport/passport.js'
 
@@ -35,7 +35,7 @@ app.use((_, req, res, next) => {
 })
 
 app.use('/users', userRoute)
-// app.use('/products', productRoute)
+app.use('/products', productRoute)
 // app.use('/orders', orderRoute)
 
 app.get('/', (req, res) => {

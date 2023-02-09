@@ -4,10 +4,13 @@
       <q-toolbar>
         <q-toolbar-title class="text-center">
         </q-toolbar-title>
-        <q-btn flat round dense icon="account_circle" class="q-mr-sm text-primary">
-          <q-menu>
+        <q-item style="color: #000;">{{ account }}，歡迎回來! </q-item>
+        <q-btn flat round dense :icon="menu" class="q-mr-sm text-primary">
+          <img :src="avatars" style="width: 50px;">
+          <q-menu
+          transition-show="jump-down"
+          transition-hide="jump-up">
             <q-list style="min-width: 100px">
-
               <q-item clickable v-close-popup v-if="isLogin" @click="logout" to="/">
                 <q-item-section>登出</q-item-section>
               </q-item>
@@ -15,7 +18,7 @@
               <q-item clickable v-close-popup v-if="isLogin" to="/vip">
                 <q-item-section>會員中心</q-item-section>
               </q-item>
-              <q-item clickable v-close-popup v-if="isAdmin&&isLogin" to="/admin">
+              <q-item clickable v-close-popup v-if="isAdmin&&isAdmin" to="/admin">
                 <q-item-section>管理者中心</q-item-section>
               </q-item>
             </q-list>
@@ -101,7 +104,7 @@ import { storeToRefs } from 'pinia'
 
 const drawer = ref(false)
 const user = useUserStore()
-const { isLogin, isAdmin } = storeToRefs(user)
+const { isLogin, isAdmin, avatars, account } = storeToRefs(user)
 const { logout } = user
 
 </script>

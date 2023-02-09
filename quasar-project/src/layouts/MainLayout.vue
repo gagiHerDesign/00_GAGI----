@@ -12,11 +12,14 @@
 
           </q-btn>
         </q-toolbar-title>
-        <q-btn flat round dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/cart">
+        <q-btn flat dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/cart">
           <q-badge :content="cart" rounded floating color="accent" label="0"/>購物車
         </q-btn>
         <q-btn flat round dense icon="account_circle" class="q-mr-sm">
-          <q-menu>
+          <q-menu
+          transition-show="jump-down"
+          transition-hide="jump-up"
+          >
           <q-list style="min-width: 100px">
               <q-item clickable v-close-popup v-if="!isLogin" @click="openLoginModal= true">
               <q-item-section>登入/註冊</q-item-section>
@@ -53,12 +56,12 @@
       <!-- 彈出視窗 -->
       <!-- 註冊視窗 -->
       <q-dialog v-model="openRegisterModal" persistent>
-        <div id="q-app" style="min-height: 50vh; background: #FFFEF2; margin: auto;">
+        <div id="q-app" style="min-height: 50vh; background: #FFFEF2; margin: auto;font-weight: 100;">
+          <div class="cancel">
+            <img src="../assets/img/logo/XX.svg" size="150px" v-close-popup>
+          </div>
     <div class="q-mx-auto q-py-lg" style="max-width: 500px">
-      <div class="btn_submit" align="right">
-        <q-btn flat round color="primary" icon="close" v-close-popup></q-btn>
-      </div>
-      <h2>Create Account</h2>
+      <h4 style="font-weight: 600;">註冊會員</h4>
       <q-form @submit="subRegister" class="q-gutter-md">
         <!-- 帳號 -->
         <q-input filled v-model="form.account" label="Your account *" :rules="[rules.required, rules.length]" counter
@@ -84,10 +87,10 @@
       <!-- 登入視窗 -->
       <q-dialog v-model="openLoginModal" persistent>
         <div id="q-app" style="min-height: 50vh; background: #FFFEF2; margin: auto;">
+          <div class="cancel">
+            <img src="../assets/img/logo/XX.svg" size="150px" v-close-popup>
+          </div>
           <div class=" q-py-lg" style="max-width: 500px; margin-left: 2rem;margin-right: 2rem;">
-            <div class="btn_submit" align="right">
-              <q-btn flat round color="primary" icon="close" v-close-popup></q-btn>
-            </div>
             <h4 style="font-weight: 600;">會員登入</h4>
             <q-form @submit="subLogin" class="q-gutter-md">
               <!-- 帳號 -->

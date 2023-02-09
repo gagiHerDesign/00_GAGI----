@@ -7,11 +7,10 @@
         <q-item style="color: #000;">{{ account }}，歡迎回來! </q-item>
         <q-btn flat round dense :icon="menu" class="q-mr-sm text-primary">
           <img :src="avatars" style="width: 50px;">
-          <q-menu>
+          <q-menu
+          transition-show="jump-down"
+          transition-hide="jump-up">
             <q-list style="min-width: 100px">
-              <q-item clickable v-close-popup v-if="!isLogin" @click="openLoginModal = true">
-                <q-item-section>登入/註冊</q-item-section>
-              </q-item>
               <q-item clickable v-close-popup v-if="isLogin" @click="logout" to="/">
                 <q-item-section>登出</q-item-section>
               </q-item>
