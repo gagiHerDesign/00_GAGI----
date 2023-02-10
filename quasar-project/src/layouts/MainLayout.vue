@@ -168,7 +168,6 @@ const rules = {
 }
 
 const subRegister = async () => {
-  // 如果驗證失敗
   loading.value = true
   try {
     await api.post('/users', form)
