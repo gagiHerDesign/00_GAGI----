@@ -29,6 +29,10 @@ const schema = new Schema({
       values: ['淨膚保養', '沐浴清潔', '空間香氛'],
       message: '分類錯誤'
     }
+  },
+  volume: {
+    type: String,
+    required: [true, '缺少容量']
   }
 }, { versionKey: false })
 

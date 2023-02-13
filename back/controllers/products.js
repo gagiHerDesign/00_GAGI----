@@ -8,7 +8,8 @@ export const createProduct = async (req, res) => {
       description: req.body.description,
       image: req.file?.path || '',
       sell: req.body.sell,
-      category: req.body.category
+      category: req.body.category,
+      volume: req.body.volume
     })
     res.status(200).json({ success: true, message: '', result })
   } catch (error) {
@@ -67,7 +68,8 @@ export const editProduct = async (req, res) => {
       description: req.body.description,
       image: req.file?.path,
       sell: req.body.sell,
-      category: req.body.category
+      category: req.body.category,
+      volume: req.body.volume
     }, { new: true })
     if (!result) {
       res.status(404).json({ success: false, message: '找不到' })

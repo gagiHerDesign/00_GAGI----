@@ -16,7 +16,7 @@
               <!-- 新增圖片 -->
               <div>
                 <v-image-input v-model="form.image" style="margin: 2rem;" />
-                <q-img v-if="form.image" :src="form.image" style="margin: 2rem;" />
+                <q-img v-if="form.image" :src="form.image" style="width: 80%" />
                 <q-tooltip anchor="center right" self="center left" :offset="[-200, 10]">
                   <strong>點擊新增圖片 : </strong>
                   <li>大小限制2mb</li>
@@ -31,6 +31,8 @@
               <!-- 商品說明 -->
               <q-input class="wid" filled v-model="form.description" label="商品說明" clearable type="textarea"
                 color="red-12" @keydown="processTextareaFill" @focus="processTextareaFill" :rules="[rules.required]" />
+              <!-- 商品容量 -->
+              <q-input class="wid" filled v-model="form.volume" label="商品容量" :rules="[rules.required]" />
               <!-- 商品分類 -->
               <q-select class="wid" filled v-model="form.category" :options="categories" label="商品分類"
                 :rules="[rules.required]" />
@@ -111,6 +113,7 @@ const form = reactive({
   image: undefined,
   sell: false,
   category: '',
+  volume: '',
   loading: false
 })
 
@@ -123,6 +126,7 @@ const openMenu = (idx) => {
     form.image = undefined
     form.sell = false
     form.category = ''
+    form.volume = ''
     form.loading = false
     form.idx = -1
   } else {
@@ -133,6 +137,7 @@ const openMenu = (idx) => {
     form.image = products[idx].image
     form.sell = products[idx].sell
     form.category = products[idx].category
+    form.volume = products[idx].volume
     form.loading = false
     form.idx = idx
   }
@@ -151,6 +156,7 @@ const submit = async () => {
   fd.append('image', form.image)
   fd.append('sell', form.sell)
   fd.append('category', form.category)
+  fd.append('volume', form.volume)
 
   try {
     // 要新增
