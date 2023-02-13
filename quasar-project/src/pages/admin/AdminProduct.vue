@@ -3,15 +3,11 @@
     <div class="container">
       <h6 style="font-weight: 600;">商品管理</h6>
 
-      <q-btn label="新增商品" color="primary" @click="openMenu(-1)"
-      size="15px"
-      class="q-px-xl q-py-xs"
-      style="position: absolute; top: 10%; left: 83%; transform: translate(-50%, -50%);"
-      ></q-btn>
+      <q-btn label="新增商品" color="primary" @click="openMenu(-1)" size="15px" class="q-px-xl q-py-xs"
+        style="position: absolute; top: 10%; left: 83%; transform: translate(-50%, -50%);"></q-btn>
       <q-dialog v-model="form.dialog" persistent>
         <div id="q-app" style="max-height: 70vh; background: #FFFEF2; margin: auto;font-weight: 100;">
-          <div class="cancel"
-          transition-show="rotate">
+          <div class="cancel" transition-show="rotate">
             <img src="../../assets/img/logo/XX.svg" size="50px" v-close-popup>
           </div>
           <div class="q-mx-auto q-py-lg" style="max-width: 500px">
@@ -19,8 +15,8 @@
             <q-form @submit="submit" class="q-gutter-md">
               <!-- 新增圖片 -->
               <div>
-                <v-image-input v-model="form.image" style="margin: 2rem;">
-                </v-image-input>
+                <v-image-input v-model="form.image" style="margin: 2rem;" />
+                <q-img v-if="form.image" :src="form.image" style="margin: 2rem;" />
                 <q-tooltip anchor="center right" self="center left" :offset="[-200, 10]">
                   <strong>點擊新增圖片 : </strong>
                   <li>大小限制2mb</li>
@@ -29,21 +25,17 @@
               </div>
 
               <!-- 商品名稱 -->
-              <q-input class="wid" filled v-model="form.name" label="商品名稱" :rules="[rules.required]"/>
+              <q-input class="wid" filled v-model="form.name" label="商品名稱" :rules="[rules.required]" />
               <!-- 商品價格 -->
-              <q-input class="wid" filled v-model="form.price" label="商品價格" :rules="[rules.required, rules.price]"/>
+              <q-input class="wid" filled v-model="form.price" label="商品價格" :rules="[rules.required, rules.price]" />
               <!-- 商品說明 -->
-              <q-input class="wid" filled v-model="form.description" label="商品說明"
-              clearable
-              type="textarea"
-              color="red-12"
-              @keydown="processTextareaFill"
-              @focus="processTextareaFill"
-              :rules="[rules.required]"/>
+              <q-input class="wid" filled v-model="form.description" label="商品說明" clearable type="textarea"
+                color="red-12" @keydown="processTextareaFill" @focus="processTextareaFill" :rules="[rules.required]" />
               <!-- 商品分類 -->
-              <q-select class="wid" filled v-model="form.category" :options="categories" label="商品分類" :rules="[rules.required]"/>
+              <q-select class="wid" filled v-model="form.category" :options="categories" label="商品分類"
+                :rules="[rules.required]" />
               <!-- 上架 -->
-                <q-checkbox v-model="form.sell" label="上架商品" />
+              <q-checkbox v-model="form.sell" label="上架商品" />
               <div class="text-center" style="margin-top: 3rem;">
                 <!-- 送出 -->
                 <q-btn label="送出" type="submit" :loading="loading" color="secondary"
@@ -56,42 +48,39 @@
       </q-dialog>
       <!-- list -->
       <div style="max-width: 100%">
-    <div class="q-pa-md q-gutter-md">
-      <q-item clickable v-ripple class="text-center">
-        <q-item-section>商品名稱</q-item-section>
-        <q-item-section>商品價格</q-item-section>
-        <q-item-section>商品名稱</q-item-section>
-        <q-item-section>上架狀態</q-item-section>
-        <q-item-section>商品分類</q-item-section>
-        <q-item-section>管理/編輯</q-item-section>
-      </q-item>
-      <q-separator />
-      <!-- 下面的商品們 -->
-      <q-item clickable v-ripple class="text-center" style="background: #fff;" v-for="(product, idx) in products" :key="product._id">
-        <q-item-section>
-          <img :src="product.image" :aspect-ratio="1" :width="150" :height="150" style="object-fit: cover; margin: auto;">
-        </q-item-section>
-        <q-item-section>{{ product.name }}</q-item-section>
-        <q-item-section>{{ product.price }} 元</q-item-section>
-        <q-item-section>
-          <q-toggle
-          :label="` ${product.sell?'有':'未'} 上架`"
-          v-model="product.sell"
-          checked-icon="check"
-          color="green"
-          unchecked-icon="clear"
-          style="position: absolute;
-          left: 54%;"
-         />
-        </q-item-section>
-        <q-item-section>{{ product.category }}</q-item-section>
-        <q-item-section>
-          <div>
-          <q-btn round color="secondary" size="20px" icon="save_as" @click="openMenu(idx)"/></div>
-        </q-item-section>
-      </q-item>
-    </div>
-  </div>
+        <div class="q-pa-md q-gutter-md">
+          <q-item clickable v-ripple class="text-center">
+            <q-item-section>商品名稱</q-item-section>
+            <q-item-section>商品價格</q-item-section>
+            <q-item-section>商品名稱</q-item-section>
+            <q-item-section>上架狀態</q-item-section>
+            <q-item-section>商品分類</q-item-section>
+            <q-item-section>管理/編輯</q-item-section>
+          </q-item>
+          <q-separator />
+          <!-- 下面的商品們 -->
+          <q-item clickable v-ripple class="text-center" style="background: #fff;" v-for="(product, idx) in products"
+            :key="product._id">
+            <q-item-section>
+              <img :src="product.image" :aspect-ratio="1" :width="150" :height="150"
+                style="object-fit: cover; margin: auto;">
+            </q-item-section>
+            <q-item-section>{{ product.name }}</q-item-section>
+            <q-item-section>{{ product.price }} 元</q-item-section>
+            <q-item-section>
+              <q-toggle :label="` ${product.sell ? '有' : '未'} 上架`" v-model="product.sell" checked-icon="check"
+                color="green" unchecked-icon="clear" style="position: absolute;
+          left: 54%;" />
+            </q-item-section>
+            <q-item-section>{{ product.category }}</q-item-section>
+            <q-item-section>
+              <div>
+                <q-btn round color="secondary" size="20px" icon="save_as" @click="openMenu(idx)" />
+              </div>
+            </q-item-section>
+          </q-item>
+        </div>
+      </div>
 
     </div>
   </q-page>
@@ -141,7 +130,7 @@ const openMenu = (idx) => {
     form.name = products[idx].name
     form.price = products[idx].price
     form.description = products[idx].description
-    form.image = undefined
+    form.image = products[idx].image
     form.sell = products[idx].sell
     form.category = products[idx].category
     form.loading = false
@@ -221,14 +210,16 @@ const submit = async () => {
   width: 80%;
   margin: auto;
 }
-.cancel{
+
+.cancel {
   position: absolute;
   top: 22%;
   left: 68%;
   transform: translate(-50%, -50%);
   z-index: 9000;
 }
-.wid{
+
+.wid {
   width: 85%;
   margin: auto;
 }

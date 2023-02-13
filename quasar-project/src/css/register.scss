@@ -1,12 +1,37 @@
+$breakpoint-sm: 540px;
+$breakpoint-md: 750px;
+$breakpoint-xl: 1280px;
+
+@mixin sm {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
 .swal2-container {
   z-index: 8500
 }
 .cancel{
   color: rgb(255, 255, 255);
-  position: fixed;
-  top: 22%;
-  left: 62%;
+  position: absolute;
+  top: 6%;
+  left: 88%;
   transform: translate(50%, -50%);
   z-index: 9000;
   cursor: pointer;
+}
+.cancel img {
+  width: 50px;
 }

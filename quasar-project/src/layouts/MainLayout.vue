@@ -56,11 +56,12 @@
       <!-- 彈出視窗 -->
       <!-- 註冊視窗 -->
       <q-dialog v-model="openRegisterModal" persistent>
-        <div id="q-app" style="min-height: 50vh; background: #FFFEF2; margin: auto;font-weight: 100;">
-          <div class="cancel">
-            <img src="../assets/img/logo/XX.svg" size="150px" v-close-popup>
-          </div>
-    <div class="q-mx-auto q-py-lg" style="max-width: 500px">
+        <div style="min-width: 600px;position: relative;overflow-x: hidden;">
+        <div class="cancel">
+          <img src="../assets/img/logo/XX.svg" v-close-popup>
+        </div>
+        <div id="q-app" style="min-height: 50vh; max-width: 500px;background: #FFFEF2; margin: auto;font-weight: 100;">
+    <div class="q-mx-auto q-py-lg q-px-xl" style="min-width: 400px;">
       <h4 style="font-weight: 600;">註冊會員</h4>
       <q-form @submit="subRegister" class="q-gutter-md">
         <!-- 帳號 -->
@@ -83,13 +84,15 @@
 
     </div>
   </div>
+</div>
       </q-dialog>
       <!-- 登入視窗 -->
       <q-dialog v-model="openLoginModal" persistent>
-        <div id="q-app" style="min-height: 50vh; background: #FFFEF2; margin: auto;">
-          <div class="cancel">
-            <img src="../assets/img/logo/XX.svg" size="150px" v-close-popup>
-          </div>
+        <div style="min-width: 600px;position: relative;overflow-x: hidden;">
+        <div class="cancel">
+          <img src="../assets/img/logo/XX.svg" v-close-popup>
+        </div>
+        <div id="q-app" style="min-height: 50vh; max-width: 500px;background: #FFFEF2; margin: auto;font-weight: 100;">
           <div class=" q-py-lg" style="max-width: 500px; margin-left: 2rem;margin-right: 2rem;">
             <h4 style="font-weight: 600;">會員登入</h4>
             <q-form @submit="subLogin" class="q-gutter-md">
@@ -109,11 +112,45 @@
 
           </div>
         </div>
+      </div>
       </q-dialog>
 
       <!-- footer -->
-      <q-toolbar class="bg-secondary">
-        <q-toolbar-title>你好/我是前台Footer</q-toolbar-title>
+      <q-toolbar class="bg-primary q-py-xl" style="color: #F6F1EB;">
+        <div class="row q-gutter-md q-mx-auto" style="width:80%">
+        <div class="col-12 col-sm-5">
+          <h6>交通資訊</h6>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.0543238204855!2d121.29725101495426!3d24.827815784069294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346816518056441b%3A0x8f65bf18fca9e8c9!2z57ag5ZaE55Sf5rS76L6y5aC0ICjoq4vlhYjkvobpm7vpoJDntIQp!5e0!3m2!1szh-TW!2stw!4v1676210731779!5m2!1szh-TW!2stw" width="450" height="200" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="col-12 col-sm-3 q-px-lg">
+        <h6>聯絡資訊</h6>
+        <q-separator style="background: #fff;"/>
+        <br>
+        <q-avatar icon="call"/>02-2232-5886
+        <br>
+        <q-avatar icon="home"/>335桃園市大溪區承恩路385號
+        <br>
+        <q-avatar icon="flare"/>
+        <a href="https://www.facebook.com/GreenPeaceLivingFarm/" style="color: #F6F1EB;">Facebook</a>
+        <br>
+        <q-avatar icon="send"/>
+        <a href="https://www.youtube.com/@user-ki3uv7tt6t" style="color: #F6F1EB;">Youtube</a>
+
+      </div>
+      <div class="col-12 col-sm-3 q-px-lg">
+        <h6>友善連結</h6>
+        <q-separator style="background: #fff;"/>
+        <br>
+        <q-btn flat label="最新消息" to="/"></q-btn>
+        <br>
+        <q-btn flat label="品牌理念" to="/story"></q-btn>
+        <br>
+        <q-btn flat label="產品系列" to="/products"></q-btn>
+        <br>
+        <q-btn flat label="登入會員" @click="openLoginModal=true"></q-btn>
+        <br>
+      </div>
+</div>
       </q-toolbar>
       <!-- place QPageScroller at end of page -->
       <q-page-scroller style="z-index: 100;" position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
