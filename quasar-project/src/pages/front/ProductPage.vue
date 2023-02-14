@@ -23,37 +23,7 @@
         </div>
     </div>
   </div>
-  <q-dialog v-model="openRegisterModal" persistent>
-        <div style="min-width: 600px;position: relative;overflow-x: hidden;">
-        <div class="cancel">
-          <img src="../assets/img/logo/XX.svg" v-close-popup>
-        </div>
-        <div id="q-app" style="min-height: 50vh; max-width: 500px;background: #FFFEF2; margin: auto;font-weight: 100;">
-    <div class="q-mx-auto q-py-lg q-px-xl" style="min-width: 400px;">
-      <h4 style="font-weight: 600;">註冊會員</h4>
-      <q-form @submit="subRegister" class="q-gutter-md">
-        <!-- 帳號 -->
-        <q-input filled v-model="form.account" label="Your account *" :rules="[rules.required, rules.length]" counter
-          maxlength="20"></q-input>
-        <!-- 密碼 -->
-        <q-input filled v-model="form.password" label="Your password *" :rules="[rules.required, rules.length]" counter
-          maxlength="20"></q-input>
-        <!-- 確認密碼 -->
-        <q-input filled v-model="form.passwordConfirm" label="Confirm Your password *" :rules="[rules.required, rules.length]"
-          counter maxlength="20"></q-input>
 
-        <div class="text-center" style="margin-top: 3rem;">
-          <!-- 註冊 -->
-          <q-btn label="註冊" type="submit" :loading="loading" color="secondary" style="width: 100%; padding: 1rem; font-weight: 300;"/>
-
-          <q-btn flat style="color: lightslategrey; font-weight: 300; margin-top: 1rem;" @click="openRegisterModal = false;openLoginModal = true" label="已經有 susi 會員?" />
-        </div>
-      </q-form>
-
-    </div>
-  </div>
-</div>
-      </q-dialog>
   </q-page>
 
 </template>

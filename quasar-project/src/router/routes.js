@@ -34,6 +34,16 @@ const routes = [
         }
       },
       {
+        path: '/contents/:id',
+        name: 'contents',
+        component: () => import('src/pages/front/ContentPage.vue'),
+        meta: {
+          title: '購物網 | 商品介紹',
+          login: false,
+          admin: false
+        }
+      },
+      {
         path: '/cart',
         name: 'cart',
         component: () => import('src/pages/front/CartPage.vue'),

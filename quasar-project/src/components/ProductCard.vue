@@ -1,63 +1,29 @@
 <template>
+  <q-btn bordered :to="'/contents/' + _id" class="cardLook">
   <div class="q-pa-md row items-start q-gutter-md">
-    <q-card class="my-card" flat bordered>
+    <q-card class="my-card" flat>
       <div style="width: 100%; height: 100%">
-        <q-img :src="image" style="object-fit: cover;" />
+        <q-img :src="image" class="cardImg" />
       </div>
 
       <q-card-section>
         <div class="text-overline text-orange-9">{{ category }}</div>
         <div class="text-h5 q-mt-sm q-mb-xs">{{ name }}</div>
-        <div>
+        <div style="font-weight: 100;">
           {{ volume }}ml
         </div>
       </q-card-section>
 
       <q-card-actions>
-        <q-btn class="q-px-lg" color="dark" label="More" @click="opendis = true"
+        <q-btn flat class="q-px-lg" color="dark" label="More" :to="'/contents/' + _id"
           style="font-weight: 100;width: 70%; margin: auto;" />
-
       </q-card-actions>
-
     </q-card>
-  </div>
-  <!-- 彈出視窗資訊 -->
-  <q-dialog v-model="opendis">
-    <div style="min-width: 90vw;position: relative;overflow-x: hidden;">
-      <div class="cancel">
-        <img src="../assets/img/logo/XX.svg" v-close-popup>
-      </div>
-      <div id="q-app" style="min-height: 80vh; max-width: 70vw;background: #FFFEF2; margin: auto;font-weight: 100;">
-        <div class="q-mx-auto q-py-lg q-px-xl" style="min-width: 400px;">
-          <h4 style="font-weight: 600;">商品介紹</h4>
-          <div class="row q-gutter-lg">
-            <div class="col-12 col-md-3 bb">
-              {{ category }}
-              <br>
-              <h2>{{ name }}</h2>
-            </div>
-            <div class="col-12 col-md-3 bb">
-              <img :src="image">
-            </div>
-            <div class="col-12 col-md-3 bb">
-              數量
-              <br>
-              {{ price }} 元
-              <br>
-              <q-btn color="dark" label="加入購物車" style="width:80%" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </q-dialog>
+  </div></q-btn>
 </template>
 
 <script setup>
 // import { useUserStore } from '../stores/user.js'
-import { ref } from 'vue'
-
-const opendis = ref(false)
 
 defineProps({
   /* eslint-disable */
@@ -107,11 +73,18 @@ defineProps({
   background: rgba(255, 255, 17, 0);
 
   .q-img__image {
-    filter: drop-shadow(10px 10px 2px #dadada);
+    filter: drop-shadow(5px 5px 1px #c7bfbc);
+  }
+}
+.cardLook{
+  height: 100%;
+  &:hover{
+    background:linear-gradient(0deg, rgb(255, 255, 255) 60%, rgba(255, 255, 255, 0.404) 40%);
+    .cardImg{
+      transform: scale(1.1);
+      transition: 0.5s;
+    }
   }
 }
 
-.bb {
-  border: 1px solid saddlebrown;
-}
 </style>
