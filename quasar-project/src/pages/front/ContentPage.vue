@@ -1,5 +1,6 @@
 <template>
-  <q-page class="bg q-mx-auto" style="padding-top: 100px; padding-bottom: 50vh;width: 80%;">
+  <!-- 上方購物頁面 -->
+  <q-page class="bg q-mx-auto" style="padding-top: 100px; padding-bottom: 25vh;width: 80%;">
         <div class="q-mx-auto q-py-lg q-px-xl" style="min-width: 70%">
           <q-breadcrumbs class="text-brown">
       <template v-slot:separator>
@@ -59,23 +60,56 @@
           </div>
         </div>
   </q-page>
-  <h4>推薦清單</h4>
+  <q-page>
+    <div class="row">
+      <div class="col-12 col-md-6">
+<img class="bigInfo" src="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80">
+      </div>
+      <div class="col-12 col-md-6 q-pa-xl">
+        <h3>純天然有機茶樹精華</h3>
+        <h5 class="text-orange-9">舒緩修復、保濕滋潤</h5>
+        <p>
+          我們的純天然有機茶樹精華是一種溫和、有效的護膚品，以純淨天然的有機茶樹為基礎，能夠舒緩修復肌膚，並提供深層保濕和滋潤功效。</p>
+<p>
+由於茶樹本身富含多種天然營養成分，包括維生素、礦物質和抗氧化劑等，因此它是一種理想的天然護膚品，能夠幫助改善肌膚質地，減少皺紋和細紋的出現，同時增強皮膚的免疫力，防止日常污染和環境壓力對肌膚的損害。
+</p>
+<p>
+我們的純天然有機茶樹精華不含有害的化學物質，如硫酸鹽、對羥基苯甲酸酯、人造香料和染料等。因此，它是一種非常安全的護膚品，適合所有皮膚類型使用，包括敏感肌膚。使用我們的蘆薈凝膠，您可以享受到純天然的護膚體驗，令肌膚更加柔軟、明亮和健康。
+        </p>
+      </div>
+    </div>
+    <div class="rowReverse">
+      <div class="col-12 col-md-6 q-pa-xl">
+        <h3>有機植物身體乳</h3>
+        <h5 class="text-orange-9">滋養肌膚，呵護身體</h5>
+        <p>
+          這款有機植物身體乳由多種純天然成分製成，能滋養和保護您的肌膚。我們使用最優質的有機植物油，如椰子油、甜杏仁油和薰衣草精油等，能深層滋潤肌膚，同時提供豐富的營養。不含有害的人工香料和色素</p>
+<p>
+  我們精心挑選了最優質的植物成分，如蘆薈、綠茶和迷迭香，能有效清潔肌膚，同時舒緩和保濕。無添加人工香料和色素，使用時不刺激，能讓您的肌膚感受到自然的呵護。
+</p>
+<p>
+我們的純天然有機植物身體乳不含有害的化學物質，如硫酸鹽、對羥基苯甲酸酯、人造香料和染料等。因此，它是一種非常安全的護膚品，適合所有皮膚類型使用，包括敏感肌膚。使用我們的有機植物身體乳，您可以享受到純天然的護膚體驗，令肌膚更加柔軟、明亮和健康。
+        </p>
+      </div>
+      <div class="col-12 col-md-6">
+        <img class="bigInfo" src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
+      </div>
+    </div>
+  </q-page>
+  <!-- 推薦熱銷 -->
+  <q-page class="bg q-mx-auto" style="padding-top: 100px; padding-bottom: 30vh;width: 80%;">
+  <h4>您可能會喜歡</h4>
   <swiper
-    :spaceBetween="30"
+    :spaceBetween="50"
     :slidesPerView="4"
     :centeredSlides="true"
-    :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }"
-    :navigation="true"
-    :modules="modules"
     class="mySwiper"
   >
-      <swiper-slide class="col-12 col-md-4" v-for="product in products" :key="product._id" style="margin-top: 5rem;">
+      <swiper-slide class="myCard" v-for="product in products" :key="product._id" style="margin-top: 5rem;">
           <ProductCard v-bind="product"/>
       </swiper-slide>
   </swiper>
+  </q-page>
 </template>
 
 <script setup>
@@ -183,6 +217,27 @@ export default {
 }
 </script>
 <style lang="scss">
+$breakpoint-sm: 540px;
+$breakpoint-md: 750px;
+$breakpoint-xl: 1024px;
+
+@mixin sm {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: $breakpoint-xl) {
+    @content;
+  }
+}
 .bb{
   border: 1px dodgerblue solid;
 }
@@ -193,13 +248,13 @@ export default {
   width: 5vh;
   height: 2vh;
   border: 1px solid #000;
-  margin-right: 3rem;
+  margin-right: 2vw;
 }
 .num{
   width: 20%;
   height: 2vh;
   font-size: 20px;
-  margin-right: 3rem;
+  margin-right: 2vw;
   margin-top: -3rem;
 }
 .add{
@@ -208,6 +263,39 @@ export default {
   border: 1px solid #000;
 }
 .mySwiper{
+  width: 80vw;
+}
+.bigInfo{
+  width: 100%;
+  object-fit: cover;
+}
+.rowReverse{
   width: 99vw;
+  display: flex;
+  margin-top: -1vh;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.rowReverse > .col-md-6 {
+  height: auto;
+  width: 50%;
+}
+
+@include xl {
+.rowReverse {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2vh;
+flex-direction: column-reverse;
+}
+.rowReverse > .col-md-6 {
+  height: auto;
+  width: 100%;
+}
+}
+@include xl{
+  .myCard{
+    margin-right: 10rem;
+  }
 }
 </style>

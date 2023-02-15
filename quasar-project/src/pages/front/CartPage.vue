@@ -1,7 +1,3 @@
 <template>
-  <h1>購物車</h1>
+  123
 </template>
-
-<script>
-
-</script>
