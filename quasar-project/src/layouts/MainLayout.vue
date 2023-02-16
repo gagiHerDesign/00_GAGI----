@@ -5,14 +5,15 @@
 
       <!-- 第一行 -->
       <q-toolbar>
-        <q-toolbar-title class="text-center">
+        <q-toolbar-title style="position: absolute;left: 45vw;">
           <q-btn flat class="q-mr-sm" to="/">
 
               <img style="height: 40px;" src="../assets/img/logo/logo-front.svg">
 
           </q-btn>
         </q-toolbar-title>
-        <q-btn flat dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/cart">
+        <div style="position: absolute;left: 85vw;;">
+        <q-btn flat dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/cart" >
           <q-badge :label="cart" rounded floating color="accent"/>購物車
         </q-btn>
         <q-btn flat round dense icon="account_circle" class="q-mr-sm">
@@ -36,7 +37,7 @@
             </q-item>
           </q-list>
         </q-menu>
-        </q-btn>
+        </q-btn></div>
       </q-toolbar>
       <!-- 第二行 -->
       <q-toolbar>
