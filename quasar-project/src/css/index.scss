@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'Gilroy-ChiayiCity';
+  src: url('../assets/font/ChiayiCity.woff') format("woff");
+}
+
+$breakpoint-sm: 540px;
+$breakpoint-md: 750px;
+$breakpoint-xl: 1024px;
+
+@mixin sm {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: $breakpoint-xl) {
+    @content;
+  }
+}
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+#hero {
+  width: 99vw;
+  position: relative;
+
+  .kv {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .Big_title {
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: #007bff 1px solid;
+    z-index: 1000;
+    font-family: 'Gilroy-ChiayiCity';
+    text-align: left;
+
+    .Big_h1 {
+      margin: -26rem 4rem 0 4rem;
+      font-size: 5vw;
+    }
+  }
+
+  @include md {
+    .Big_title {
+
+      .Big_h1 {
+        margin: 0 3rem;
+      }
+    }
+  }
+
+}
