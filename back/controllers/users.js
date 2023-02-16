@@ -130,3 +130,13 @@ export const getCart = async (req, res) => {
     res.status(500).json({ success: false, message: '未知錯誤' })
   }
 }
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const result = await users.find()
+    res.status(200).json({ success: true, message: '', result })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: '未知錯誤' })
+  }
+}

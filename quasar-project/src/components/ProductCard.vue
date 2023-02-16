@@ -1,4 +1,5 @@
 <template>
+  <div id="Pcard">
   <q-btn bordered :to="'/contents/' + _id" class="cardLook">
   <div class="q-pa-md row items-start q-gutter-md">
     <q-card class="my-card" flat>
@@ -8,8 +9,8 @@
 
       <q-card-section>
         <div class="text-overline text-orange-9">{{ category }}</div>
-        <div class="text-h5 q-mt-sm q-mb-xs">{{ name }}</div>
-        <div style="font-weight: 100;">
+        <div class="text-primary text-h5 q-mt-sm q-mb-xs">{{ name }}</div>
+        <div class="text-primary" style="font-weight: 100;">
           {{ volume }}ml
         </div>
       </q-card-section>
@@ -21,7 +22,9 @@
           style="font-weight: 100;width: 70%; margin: auto;" />
       </q-card-actions>
     </q-card>
-  </div></q-btn>
+  </div>
+  </q-btn>
+  </div>
 </template>
 
 <script setup>
@@ -70,6 +73,11 @@ const { editCart } = user
 </script>
 
 <style lang="scss">
+#Pcard{
+  .q-btn{
+  color: #fff;
+}
+
 .q-card {
   width: 350px;
   background: rgba(255, 255, 17, 0);
@@ -81,12 +89,13 @@ const { editCart } = user
 .cardLook{
   height: 100%;
   &:hover{
-    background:linear-gradient(0deg, rgb(255, 255, 255) 60%, rgba(255, 255, 255, 0.404) 40%);
+    background:linear-gradient(0deg, rgb(255, 255, 255) 70%, rgba(255, 255, 255, 0.09) 30%);
     .cardImg{
-      transform: scale(1.1);
+      transform: scale(1.2);
       transition: 0.5s;
     }
   }
+}
 }
 
 </style>
