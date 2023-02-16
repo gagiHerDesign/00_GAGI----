@@ -1,7 +1,7 @@
-@font-face {
-  font-family: 'Gilroy-ChiayiCity';
-  src: url('../assets/font/ChiayiCity.woff') format("woff");
-}
+// @font-face {
+//   font-family: 'Gilroy-ChiayiCity';
+//   src: url('../assets/font/ChiayiCity.woff') format("woff");
+// }
 
 $breakpoint-sm: 540px;
 $breakpoint-md: 750px;
@@ -28,6 +28,8 @@ $breakpoint-xl: 1024px;
   display: flex;
   align-items: center;
 }
+
+
 #hero {
   width: 99vw;
   position: relative;
@@ -64,5 +66,74 @@ $breakpoint-xl: 1024px;
       }
     }
   }
+}
+#indexContainer{
+  width: 70%;margin: auto;
+.marquee{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 8vw;
+  color: rgb(240, 232, 213);
+}
+.services_popup {
+  display: flex;
+  justify-items: flex-start;
+  margin-top: 2rem;
+  width: 100%;
+  border: #007bff 1px solid;
 
+  .popup {
+    $width: 15vw;
+    width: $width;
+    height: $width;
+    margin: 0 auto 0 auto;
+    background: #ffffff;
+    border-radius: 50%;
+
+    img {
+      width: 70%;
+    }
+
+    .title_s {
+      font-family: 'Roboto';
+      margin-top: 1rem;
+      font-weight: 900;
+      position: relative;
+
+
+    }
+
+    .title_s::before {
+      content: '';
+      width: 2vw;
+      height: 1px;
+      background: rgb(253, 125, 125);
+      position: absolute;
+      top: 50%;
+      left: -20%;
+      transform: translate(-50%, -50%);
+    }
+
+    .title_s::after {
+      content: '';
+      width: 1px;
+      height: 2vw;
+      background: rgb(253, 125, 125);
+      position: absolute;
+      top: 50%;
+      left: -20%;
+      transform: translate(-50%, -50%);
+    }
+
+    a {
+      line-height: 2;
+      color: rgba(255, 255, 255, 0);
+    }
+
+    a:hover {
+      color: rgb(255, 255, 255);
+      transition: 1s;
+    }
+  }
+}
 }
