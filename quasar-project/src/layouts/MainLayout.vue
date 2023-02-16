@@ -13,7 +13,7 @@
           </q-btn>
         </q-toolbar-title>
         <q-btn flat dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/cart">
-          <q-badge :content="cart" rounded floating color="accent" label="0"/>購物車
+          <q-badge :label="cart" rounded floating color="accent"/>購物車
         </q-btn>
         <q-btn flat round dense icon="account_circle" class="q-mr-sm">
           <q-menu
@@ -120,7 +120,9 @@
         <div class="row q-gutter-md q-mx-auto" style="width:80%">
         <div class="col-12 col-sm-5">
           <h6>交通資訊</h6>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.0543238204855!2d121.29725101495426!3d24.827815784069294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346816518056441b%3A0x8f65bf18fca9e8c9!2z57ag5ZaE55Sf5rS76L6y5aC0ICjoq4vlhYjkvobpm7vpoJDntIQp!5e0!3m2!1szh-TW!2stw!4v1676210731779!5m2!1szh-TW!2stw" width="450" height="200" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <a href="https://www.google.com/maps/place/%E7%B6%A0%E5%96%84%E7%94%9F%E6%B4%BB%E8%BE%B2%E5%A0%B4+(%E8%AB%8B%E5%85%88%E4%BE%86%E9%9B%BB%E9%A0%90%E7%B4%84)/@24.8278207,121.297251,17z/data=!3m1!4b1!4m6!3m5!1s0x346816518056441b:0x8f65bf18fca9e8c9!8m2!3d24.8278158!4d121.2994397!16s%2Fg%2F11f5dp63m0?hl=zh-TW">
+      <img class="map" src="../assets/img/front/地圖.png" width="450" height="200">
+    </a>
       </div>
       <div class="col-12 col-sm-3 q-px-lg">
         <h6>聯絡資訊</h6>
@@ -242,6 +244,10 @@ const subLogin = async () => {
 
 .q-header .q-layout__shadow:after {
   bottom: 0;
+}
+.map:hover{
+transform: scale(1.1);
+transition: 1s;
 }
 
 </style>

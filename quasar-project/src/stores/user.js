@@ -77,6 +77,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const editCart = async ({ _id, quantity }) => {
+    // 表示還沒有登入
     if (token.value.length === 0) {
       Swal.fire({
         icon: 'error',
@@ -102,9 +103,26 @@ export const useUserStore = defineStore('user', () => {
       })
     }
   }
+  const checkout = async () => {
+    try {
+      await apiAuth.post('/orders')
+      cart.value = 0
+      Swal.fire({
+        icon: 'success',
+        title: '成功',
+        text: '結帳成功'
+      })
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: '失敗',
+        text: error?.response?.data?.message || '發生錯誤'
+      })
+    }
+  }
 
   return {
-    token, account, email, cart, role, login, isLogin, isAdmin, avatars, logout, getUser, editCart
+    token, account, email, cart, role, login, isLogin, isAdmin, avatars, logout, getUser, editCart, checkout
   }
 }, {
   persist: {

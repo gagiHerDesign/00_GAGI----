@@ -17,13 +17,15 @@
       <q-card-actions>
         <q-btn flat class="q-px-lg" color="dark" label="More" :to="'/contents/' + _id"
           style="font-weight: 100;width: 70%; margin: auto;" />
+          <q-btn flat class="q-px-lg" color="dark" label="加入購物車" @click="editCart({_id, quantity: 1})"
+          style="font-weight: 100;width: 70%; margin: auto;" />
       </q-card-actions>
     </q-card>
   </div></q-btn>
 </template>
 
 <script setup>
-// import { useUserStore } from '../stores/user.js'
+import { useUserStore } from '../stores/user.js'
 
 defineProps({
   /* eslint-disable */
@@ -63,8 +65,8 @@ defineProps({
 })
 
 // 商品加入購物車之後要储存在前台
-// const user = useUserStore()
-// const { editCart } = user
+const user = useUserStore()
+const { editCart } = user
 </script>
 
 <style lang="scss">

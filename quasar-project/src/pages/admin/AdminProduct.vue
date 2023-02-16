@@ -4,7 +4,7 @@
       <h6 style="font-weight: 600;">商品管理</h6>
 
       <q-btn label="新增商品" color="primary" @click="openMenu(-1)" size="15px" class="q-px-xl q-py-xs"
-        style="position: absolute; top: 10%; left: 83%; transform: translate(-50%, -50%);"></q-btn>
+        style="position: absolute; top: 2%; left: 83%; transform: translate(-50%, -50%);"/>
       <q-dialog v-model="form.dialog" persistent>
         <div id="q-app" style="max-height: 70vh; background: #FFFEF2; margin: auto;font-weight: 100;">
           <div class="cancel" transition-show="rotate">
