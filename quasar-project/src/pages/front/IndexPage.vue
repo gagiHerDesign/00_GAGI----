@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg text-center" style="padding-top: 100px; width: 99vw;">
+  <q-page class="bg text-center" style="padding-top: 100px; padding-bottom: 50vh; width: 99vw;">
     <!-- 大圖區 -->
     <div id="hero">
       <div class="Big_title d-flex">
@@ -11,63 +11,79 @@
       </div>
       <video class="kv" ref="video" src="../../assets/img/front/hero.mp4" muted></video>
     </div>
+    <!-- 跑馬燈區 -->
+    <marquee class="marquee" align="middle">Protect the environment, love our planet.</marquee>
     <div id="indexContainer">
 
-      <!-- 跑馬燈區 -->
-      <marquee class="marquee" align="middle">Protect the environment, love our planet.</marquee>
       <!-- 品牌理念 -->
-      <div class="row text-center">
-        <q-parallax class="col-12" src="../../assets/img/front/大圖.jpg">
-          <h1 class="text-white">Basic</h1>
-        </q-parallax>
+      <div id="brandStory" class="row text-center">
+        <!-- 橫大圖 -->
+        <div class="story">
+          <img class="storyImg" src="../../assets/img/title/story.png" style="height: 200px;" />
+          <q-parallax class="col-12 parallax" src="../../assets/img/front/大圖.jpg">
+            <!-- <h1 class="text-white">Basic</h1> -->
+          </q-parallax>
+        </div>
         <!-- 三張說明圖 -->
-        <div class="services_popup">
-          <div class="popup">
+        <div class="services_popup row">
+          <div class="popup col-12 col-md-3">
             <img src="../../assets/img/front/小圖1.svg">
             <div class="pop_info">
 
               <div class="title_s">
-                <span>Brand
-                  Promotion</span>
+                <span>Explore It</span>
               </div>
 
-              <a>We can facilitate promoting your brand to a curious audience via YouTube videos or livestreams on
-                Twitch
-                and YouTube. We aim to release creative and thought-provoking segmentsthat continuously push the
-                creative
-                boundaries of influencer marketing.</a>
+              <div class="info">
+                在這個快速發展的城市中，大家時常感到生活緊張，而天然休閒農場品牌是一個能帶給你放鬆和安寧的好去處。在這裡，你能看到清新的空氣，美麗的景色和和平的環境。你能夠與家人和朋友共同探索美麗的自然風光</div>
             </div>
           </div>
-          <div class="popup">
+          <div class="popup col-12 col-md-3">
             <img src="../../assets/img/front/小圖2.svg" alt="">
             <div class="pop_info">
               <div class="title_s">
-                <span>Appearances </span>
+                <span>Natural Leisure </span>
               </div>
-              <a>Our creators have long-running experience leading in-house panels, hosting televised events, and even
-                voice acting. We aim to release creative.</a>
+              <div class="info">天然休閒農場品牌是一個能夠帶給您極大樂趣的地方。在這裡，您可以與自然共舞，探索這個美麗的世界。您可以潛入叢林，騎馬遠足，欣賞風景等等。</div>
             </div>
           </div>
-          <div class="popup">
+          <div class="popup col-12 col-md-3">
             <img src="../../assets/img/front/小圖3.svg" alt="">
             <div class="pop_info">
               <div class="title_s">
-                <span>Japan as a </span>
                 <span>
-                  Global Hub
+                  Enjoy Nature
                 </span>
               </div>
-              <a>We support international talent in making Japan their new home-base for content creation and help
-                creators streamline their process to maximize their growth and reach out to new audiences.
-              </a>
+              <div class="info">品嚐美味的農產品，甚至還能體驗一些有趣的農場活動，例如摘水果，挖蔬菜等等。在這裡，你可以完全放鬆，遠離城市的塵囂，並且深深感受到大自然的力量和美麗。
+              </div>
             </div>
           </div>
 
         </div>
       </div>
+
+      <!-- 種樹去 -->
+      <div id="plant" class=" row text-center">
+        <div class="col-12 col-md-6">
+          <img class="imgF" src="../../assets/img/front/拿著花.png" alt="拿著花">
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="plant2">
+            <img src="../../assets/img/title/green.png">
+            <div class="plantInfo">
+              <h3 class="text-orange">認養茶樹</h3>
+              <q-separator />
+          <h6>綠善休閒農場是一種農商整合模式，關鍵在透過同一即集水區的整合，由在地農家一起將生態成為品牌。</h6>
+          <h6>這是我們提出的「茶樹認養」模式，將夢想訴諸眾多的行動，一步一步往前邁進。</h6>
+          <q-btn class="plantBtn" round color="primary" label="了解更多" to="/story"/>
+          </div>
+          </div>
+                  </div>
+      </div>
     </div>
   </q-page>
-<div ref="box" class="box"></div>
+  <div ref="box" class="box"></div>
 </template>
 
 <script>

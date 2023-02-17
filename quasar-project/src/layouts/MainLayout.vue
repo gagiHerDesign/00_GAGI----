@@ -12,7 +12,7 @@
 
           </q-btn>
         </q-toolbar-title>
-        <div style="position: absolute;left: 85vw;;">
+        <div style="position: absolute;left: 85vw;">
         <q-btn flat dense v-if="isLogin"  icon="shopping_cart" class="q-mr-sm" to="/cart" >
           <q-badge :label="cart" rounded floating color="accent"/>購物車
         </q-btn>
@@ -122,7 +122,7 @@
         <div class="col-12 col-sm-5">
           <h6>交通資訊</h6>
     <a href="https://www.google.com/maps/place/%E7%B6%A0%E5%96%84%E7%94%9F%E6%B4%BB%E8%BE%B2%E5%A0%B4+(%E8%AB%8B%E5%85%88%E4%BE%86%E9%9B%BB%E9%A0%90%E7%B4%84)/@24.8278207,121.297251,17z/data=!3m1!4b1!4m6!3m5!1s0x346816518056441b:0x8f65bf18fca9e8c9!8m2!3d24.8278158!4d121.2994397!16s%2Fg%2F11f5dp63m0?hl=zh-TW">
-      <img class="map" src="../assets/img/front/地圖.png" width="450" height="200">
+      <img class="map" src="../assets/img/front/地圖.png">
     </a>
       </div>
       <div class="col-12 col-sm-3 q-px-lg">
