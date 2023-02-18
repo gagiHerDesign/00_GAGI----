@@ -52,6 +52,16 @@ const routes = [
           login: true,
           admin: false
         }
+      },
+      {
+        path: '/test',
+        name: 'test',
+        component: () => import('src/pages/front/TestPage.vue'),
+        meta: {
+          title: '購物網 | test',
+          login: false,
+          admin: false
+        }
       }
 
     ]
