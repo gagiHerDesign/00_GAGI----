@@ -1,16 +1,53 @@
 <template>
-  <q-page class="bg text-center" style="padding-top: 100px; padding-bottom: 50vh; width: 99vw;">
+  <q-page id="indexPage" class="bg text-center" style="padding-bottom: 50vh; width: 100vw;">
     <!-- 大圖區 -->
-    <div id="hero">
-      <div class="Big_title d-flex">
+    <div id="hero"><video class="kv" ref="video" src="../../assets/img/front/hero.mp4" muted></video>
+      <!-- <div class="Big_title d-flex">
         <div class="Big_h1">
           <p style="font-size: 20px;">
             一起守護您的未來</p>
           綠善休閒農場
+
         </div>
+      </div> -->
+      <div class="sm_title">
+        <swiper
+    :spaceBetween="30"
+    :centeredSlides="true"
+    :autoplay="{
+      delay: 2500,
+      disableOnInteraction: false,
+    }"
+
+    :navigation="false"
+    :modules="modules"
+    class="mySwiper"
+  >
+    <swiper-slide>
+      <h6>✦歡迎蒞臨綠善觀光農場</h6>
+    </swiper-slide>
+    <swiper-slide>
+      <h6>✦回歸自然，感受田園風光</h6>
+    </swiper-slide>
+    <swiper-slide>
+      <h6>✦讓心靈去旅行，體驗大自然的美好</h6>
+    </swiper-slide>
+    <swiper-slide>
+      <h6>✦放慢腳步，享受農場生活的悠閒</h6>
+    </swiper-slide>
+    <swiper-slide>
+      <h6>✦和家人一起來農場，共創美好回憶</h6>
+    </swiper-slide>
+    <swiper-slide>
+      <h6>✦種下快樂，收穫幸福，農場生活，讓生命更精彩</h6>
+    </swiper-slide>
+    <swiper-slide>
+      <h6>✦農場裡，自然之美盡收眼底，心靈之旅留下美好印記</h6>
+    </swiper-slide>
+    </swiper>
       </div>
-      <video class="kv" ref="video" src="../../assets/img/front/hero.mp4" muted></video>
     </div>
+
     <!-- 跑馬燈區 -->
     <marquee class="marquee" align="middle">Protect the environment, love our planet.</marquee>
     <div id="indexContainer">
@@ -235,7 +272,35 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue'
+import { gsap } from 'gsap'
+
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+// Import Swiper styles
+import 'swiper/css'
+
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper'
+
 export default {
+  setup () {
+    const box = ref(null)
+
+    onMounted(() => {
+      gsap.to(box.value, { duration: 1, x: 100 })
+    })
+
+    return { box, modules: [Autoplay, Pagination, Navigation] }
+  },
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   mounted () {
     const video = this.$refs.video
     video.play()
@@ -247,24 +312,9 @@ export default {
   }
 }
 </script>
-<script setup>
-import { ref, onMounted } from 'vue'
-import { gsap } from 'gsap'
-
-const box = ref(null)
-
-onMounted(() => {
-  gsap.to(box.value, { duration: 1, x: 100 })
-})
-</script>
 
 <style lang="scss">
 @import '../../css/index.scss';
-
-.bg {
-  background: #F6F1EB;
-  padding-top: -10rem;
-}
 
 .box {
   width: 100px;
