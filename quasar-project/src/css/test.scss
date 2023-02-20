@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
 
-#testPage {
+#productSwiper {
   // font-family: var(--body-font);
   //   // background-color: #1d1e20;
   //   display: flex;
@@ -49,7 +49,7 @@
   }
 
   // body {
-    
+
   // }
 
   .container {
@@ -283,7 +283,8 @@
     font-family: var(--body-font);
     font-weight: 500;
   }
-  .swiper-pagination-bullet{
+
+  .swiper-pagination-bullet {
     background: #e86357;
   }
 
@@ -311,68 +312,40 @@
       width: 28px;
     }
 
-    // .swiper-button {
-    //   border: 1px solid var(--body-color);
-    //   border-radius: 50%;
-    //   width: 44px;
-    //   height: 44px;
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: center;
-    //   background: linear-gradient(to right, var(--body-color) 40%, transparent 0%);
-    //   background-size: 200% 100%;
-    //   background-position: right bottom;
-    //   transition: all 0.3s ease-out;
-    //   cursor: pointer;
-
-    //   &+.swiper-button {
-    //     margin-left: 16px;
-
-    //     @media screen and (max-width: 930px) {
-    //       margin-left: 0;
-    //     }
-    //   }
-
-    //   &:hover {
-    //     background-color: var(--body-color);
-    //     background-position: left bottom;
-
-    //     svg {
-    //       stroke: #fff;
-    //     }
-    //   }
-    // }
-    .swiper-button-next{
-      background: aqua;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    position: absolute;
-    top: 90%;
-    }
-    .swiper-button-prev::after{
-      background: aqua;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    position: absolute;
-    left: 90vw;
   }
 
-    // .swiper-prev-button {
-    //   background: linear-gradient(to left, var(--body-color) 40%, transparent 0%);
-    //   background-size: 200% 100%;
-    //   background-position: left bottom;
-    //   transition: all 0.3s ease-out;
+  .swiper-button-next {
+    $w: 25px !important;
+    width: $w !important;
+    height: $w !important;
+    border-radius: 50%;
+    padding: 2rem;
+    position: absolute;
+    left: 160vh;
+    top: 70vh;
+    transform: translate(-50%, -50%);
+    color: #000000;
+    z-index: 9000;
 
-    //   svg {
-    //     transform: rotate(-180deg);
-    //   }
+    &:hover {
+      color: #ffffff;
+      background: #000000;
+    }
+  }
 
-    //   &:hover {
-    //     background-position: right bottom;
-    //   }
-    // }
+  .swiper-button-prev {
+    border-radius: 50%;
+    padding: 2rem;
+    position: absolute;
+    left: 145vh;
+    top: 70vh;
+    transform: translate(-50%, -50%);
+    color: #000000;
+
+    &:hover {
+      color: #ffffff;
+      background: #000000;
+    }
   }
 
   .swiper-slide {
@@ -421,41 +394,8 @@
     transform: scale(1.6);
   }
 
-  [data-sld="1"] {
-
-    .container,
-    .header {
-      background-color: var(--savanna-bg);
-    }
-  }
-
-  [data-sld="2"] {
-
-    .container,
-    .header {
-      background-color: var(--glacier-bg);
-    }
-  }
-
-  [data-sld="3"] {
-
-    .container,
-    .header {
-      background-color: var(--coral-bg);
-    }
+  .main-content__title {
+    font-size: calc(15px + 0.5vw) !important;
+    font-style: normal;
   }
 }
-
-// #testPage{
-//   .mySwiper{
-//     .main{
-//     .left{
-//       .main-wrapper{
-//         text-align: left;
-
-//       }
-//     }
-//   }
-//   }
-  
-// }

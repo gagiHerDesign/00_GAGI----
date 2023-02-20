@@ -3,48 +3,40 @@
     <!-- 大圖區 -->
     <div id="hero"><video class="kv" ref="video" src="../../assets/img/front/hero.mp4" muted></video>
       <!-- <div class="Big_title d-flex">
-        <div class="Big_h1">
-          <p style="font-size: 20px;">
-            一起守護您的未來</p>
-          綠善休閒農場
+            <div class="Big_h1">
+              <p style="font-size: 20px;">
+                一起守護您的未來</p>
+              綠善休閒農場
 
-        </div>
-      </div> -->
+            </div>
+          </div> -->
       <div class="sm_title">
-        <swiper
-    :spaceBetween="30"
-    :centeredSlides="true"
-    :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }"
-
-    :navigation="false"
-    :modules="modules"
-    class="mySwiper"
-  >
-    <swiper-slide>
-      <h6>✦歡迎蒞臨綠善觀光農場</h6>
-    </swiper-slide>
-    <swiper-slide>
-      <h6>✦回歸自然，感受田園風光</h6>
-    </swiper-slide>
-    <swiper-slide>
-      <h6>✦讓心靈去旅行，體驗大自然的美好</h6>
-    </swiper-slide>
-    <swiper-slide>
-      <h6>✦放慢腳步，享受農場生活的悠閒</h6>
-    </swiper-slide>
-    <swiper-slide>
-      <h6>✦和家人一起來農場，共創美好回憶</h6>
-    </swiper-slide>
-    <swiper-slide>
-      <h6>✦種下快樂，收穫幸福，農場生活，讓生命更精彩</h6>
-    </swiper-slide>
-    <swiper-slide>
-      <h6>✦農場裡，自然之美盡收眼底，心靈之旅留下美好印記</h6>
-    </swiper-slide>
-    </swiper>
+        <swiper :spaceBetween="30" :centeredSlides="true" :autoplay="{
+          delay: 2500,
+          disableOnInteraction: false,
+        }" :navigation="false" :modules="modules" class="mySwiper">
+          <swiper-slide>
+            <h6>✦歡迎蒞臨綠善觀光農場</h6>
+          </swiper-slide>
+          <swiper-slide>
+            <h6>✦回歸自然，感受田園風光</h6>
+          </swiper-slide>
+          <swiper-slide>
+            <h6>✦讓心靈去旅行，體驗大自然的美好</h6>
+          </swiper-slide>
+          <swiper-slide>
+            <h6>✦放慢腳步，享受農場生活的悠閒</h6>
+          </swiper-slide>
+          <swiper-slide>
+            <h6>✦和家人一起來農場，共創美好回憶</h6>
+          </swiper-slide>
+          <swiper-slide>
+            <h6>✦種下快樂，收穫幸福，農場生活，讓生命更精彩</h6>
+          </swiper-slide>
+          <swiper-slide>
+            <h6>✦農場裡，自然之美盡收眼底，心靈之旅留下美好印記</h6>
+          </swiper-slide>
+        </swiper>
       </div>
     </div>
 
@@ -99,7 +91,156 @@
 
         </div>
       </div>
-
+      <!-- 產品介紹 -->
+      <div id="productSwiper" class="container">
+        <img src="../../assets/img/title/product.png" align="right">
+        <swiper :slidesPerView="1" :spaceBetween="30" :keyboard="{
+          enabled: true,
+        }" :pagination="{
+  clickable: true,
+}" :navigation="true" :modules="modules" class="mySwiper">
+          <!-- 第一 -->
+          <swiper-slide>
+            <div class="main">
+              <div class="row">
+                <div class="left-side col-12 col-md-5">
+                  <div class="main-wrapper">
+                    <h3 class="main-header">NATURAL GIFT</h3>
+                    <h1 class="main-title">Camellia</h1>
+                    <h2 class="main-subtitle">$ 1600</h2>
+                  </div>
+                  <div class="main-content">
+                    <div class="main-content__title">熱銷10年！經典系列，在susi擁有自己的茶樹園，培育出肌膚保養專用的美肌成分。</div>
+                    <div class="main-content__subtitle">為乾燥肌膚深層補水、鎖住水分，維持健康肌底，打造健康水嫩的完美肌膚，讓肌膚365天喝飽水！</div>
+                    <q-btn class="more-menu" to="/products">
+                      Shop Now
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="-5" y1="12" x2="19" y2="12" />
+                        <line x1="15" y1="16" x2="19" y2="12" />
+                        <line x1="15" y1="8" x2="19" y2="12" />
+                      </svg>
+                    </q-btn>
+                  </div>
+                </div>
+                <div class="center col-12 col-md-5">
+                  <div class="right-side__img">
+                    <img class="bottle-bg" src="../../assets/img/front/index/bg0.jpg">
+                    <img class="bottle-img" src="../../assets/img/product/去背咖啡瓶(500).png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <!-- 第二 -->
+          <swiper-slide>
+            <div class="main">
+              <div class="row">
+                <div class="left-side col-12 col-md-5">
+                  <div class="main-wrapper">
+                    <h3 class="main-header">NATURAL GIFT</h3>
+                    <h1 class="main-title">Plantae</h1>
+                    <h2 class="main-subtitle">$ 1200</h2>
+                  </div>
+                  <div class="main-content">
+                    <div class="main-content__title">具抗老化功效從清淨、健康的susi土壤中培育出的茶樹成分，能有效為肌膚鎖住水分，打造明亮、透明肌膚。</div>
+                    <div class="main-content__subtitle">柔和的泡沫能更加深層洗淨肌膚。微生物分解-能在水中自動分解的微生物分解產品，且含98%以上純天然成分。</div>
+                    <q-btn class="more-menu" to="/products">
+                      Shop Now
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="-5" y1="12" x2="19" y2="12" />
+                        <line x1="15" y1="16" x2="19" y2="12" />
+                        <line x1="15" y1="8" x2="19" y2="12" />
+                      </svg>
+                    </q-btn>
+                  </div>
+                </div>
+                <div class="center col-12 col-md-5">
+                  <div class="right-side__img">
+                    <img class="bottle-bg" src="../../assets/img/front/index/bg1.jpg">
+                    <img class="bottle-img" src="../../assets/img/product/身體(500).png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <!-- 第三 -->
+          <swiper-slide>
+            <div class="main">
+              <div class="row">
+                <div class="left-side col-12 col-md-5">
+                  <div class="main-wrapper">
+                    <h3 class="main-header">NATURAL GIFT</h3>
+                    <h1 class="main-title">Sinensis</h1>
+                    <h2 class="main-subtitle">$ 600</h2>
+                  </div>
+                  <div class="main-content">
+                    <div class="main-content__title">SUSI護手霜：清爽且不黏膩的質地，蘊含豐富故事性的迷人香氣、輕巧好攜帶的保濕香氛護手霜。</div>
+                    <div class="main-content__subtitle">為乾燥肌膚深層補水、鎖住水分，維持健康肌底，打造健康水嫩的完美肌膚，讓肌膚365天喝飽水！</div>
+                    <q-btn class="more-menu" to="/products">
+                      Shop Now
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="-5" y1="12" x2="19" y2="12" />
+                        <line x1="15" y1="16" x2="19" y2="12" />
+                        <line x1="15" y1="8" x2="19" y2="12" />
+                      </svg>
+                    </q-btn>
+                  </div>
+                </div>
+                <div class="center col-12 col-md-5">
+                  <div class="right-side__img">
+                    <img class="bottle-bg" src="../../assets/img/front/index/bg2.jpg">
+                    <img class="bottle-img" src="../../assets/img/product/護膚(500).png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <!-- 第四 -->
+          <swiper-slide>
+            <div class="main">
+              <div class="row">
+                <div class="left-side col-12 col-md-5">
+                  <div class="main-wrapper">
+                    <h3 class="main-header">NATURAL GIFT</h3>
+                    <h1 class="main-title">Theaceae</h1>
+                    <h2 class="main-subtitle">$ 1100</h2>
+                  </div>
+                  <div class="main-content">
+                    <div class="main-content__title">給予城市人一股自然療癒力量 : 鍾愛遊沐山林、獨自沈醉清涼靜謐；一款由薰衣草、胡荽籽、廣藿香、杜松莓精油調和的洗手露。</div>
+                    <div class="main-content__subtitle">柔和的泡沫能更加深層洗淨肌膚。微生物分解-能在水中自動分解的微生物分解產品，且含98%以上純天然成分。</div>
+                    <q-btn class="more-menu" to="/products">
+                      Shop Now
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="-5" y1="12" x2="19" y2="12" />
+                        <line x1="15" y1="16" x2="19" y2="12" />
+                        <line x1="15" y1="8" x2="19" y2="12" />
+                      </svg>
+                    </q-btn>
+                  </div>
+                </div>
+                <div class="center col-12 col-md-5">
+                  <div class="right-side__img">
+                    <img class="bottle-bg" src="../../assets/img/front/index/bg3.jpg">
+                    <img class="bottle-img" src="../../assets/img/product/洗手瓶1(500).png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+      <!-- 一個視差的地方 -->
+      <q-parallax src="../../assets/img/front/大圖2.jpg" style="height: 30vh;">
+        <img src="../../assets/img/logo/logo-front.svg" >
+      </q-parallax>
       <!-- 種樹去 -->
       <div id="plant" class=" row text-center">
         <div class="col-12 col-md-6">
@@ -111,161 +252,14 @@
             <div class="plantInfo">
               <h3 class="text-orange">認養茶樹</h3>
               <q-separator />
-          <h6>綠善休閒農場是一種農商整合模式，關鍵在透過同一即集水區的整合，由在地農家一起將生態成為品牌。</h6>
-          <h6>這是我們提出的「茶樹認養」模式，將夢想訴諸眾多的行動，一步一步往前邁進。</h6>
-          <q-btn class="plantBtn" round color="primary" label="了解更多" to="/story"/>
+              <h6>綠善休閒農場是一種農商整合模式，關鍵在透過同一即集水區的整合，由在地農家一起將生態成為品牌。</h6>
+              <h6>這是我們提出的「茶樹認養」模式，將夢想訴諸眾多的行動，一步一步往前邁進。</h6>
+              <q-btn class="plantBtn" round color="primary" label="了解更多" to="/story" />
+            </div>
           </div>
-          </div>
-                  </div>
+        </div>
       </div>
-      <!-- 產品介紹 -->
-<div id="indexPro">
-<input type="radio" name="scene" id="scene-1" value="1" checked />
-<input type="radio" name="scene" id="scene-2" value="2" />
-<input type="radio" name="scene" id="scene-3" value="3" />
-<input type="radio" name="scene" id="scene-4" value="4" />
 
-<main id="site">
-  <header class="top-nav">
-    @keyframers
-  </header>
-  <div class="ocean">
-    <div class="ocean-text">Stop</div>
-  </div>
-  <div class="left-side">
-    <div class="page-numbers" data-total="04">
-      <div class="page-number -tens">0</div>
-      <div class="page-number -ones">
-        1<br/>2<br/>3<br/>4
-      </div>
-    </div>
-  </div>
-  <div class="hero">
-    <div class="layer" data-scene="1">
-      <h1 class="heading">
-        We can help<br />
-        to save<br />
-        the oceans
-      </h1>
-      <button class="button">
-        How can I help?
-      </button>
-    </div>
-    <div class="layer" data-scene="2">
-      <h1 class="heading">
-        Saving nature,<br />
-        we save our<br />
-        future
-      </h1>
-      <button class="button">
-        How can I help?
-      </button>
-    </div>
-    <div class="layer" data-scene="3">
-      <h1 class="heading">
-        Only you<br />
-        can prevent<br />
-        ocean fires
-      </h1>
-      <button class="button">
-        How can I help?
-      </button>
-    </div>
-    <div class="layer" data-scene="4">
-      <h1 class="heading">
-        Do not<br />
-        litter on<br />
-        the beach
-      </h1>
-      <button class="button">
-        How can I help?
-      </button>
-    </div>
-  </div>
-
-  <div class="left-content">
-    <div class="layer" data-scene="1">
-      <div class="fact subtitle">More than</div>
-      <div class="fact number">1 000 000</div>
-      <div class="fact description">seabirds die yearly due to plastic debris</div>
-    </div>
-    <div class="layer" data-scene="2">
-      <div class="fact subtitle">The largest garbage patch is</div>
-      <div class="fact number">1 760 000 m<sup>2</sup></div>
-      <div class="fact description">and is 10m deep</div>
-    </div>
-    <div class="layer" data-scene="3">
-      <div class="fact subtitle">More than</div>
-      <div class="fact number">700 000</div>
-      <div class="fact description">species call the ocean their home</div>
-    </div>
-    <div class="layer" data-scene="4">
-      <div class="fact subtitle">There is an estimated</div>
-      <div class="fact number">12 000 000</div>
-      <div class="fact description">metric tons of plastic in the ocean</div>
-    </div>
-  </div>
-  <div class="right-content">
-
-    <nav class="slide-nav">
-      <div class="nav-button -prev">
-        &lt;
-
-        <label class="nav-toggle" for="scene-1">1</label>
-        <label class="nav-toggle" for="scene-2">2</label>
-        <label class="nav-toggle" for="scene-3">3</label>
-        <label class="nav-toggle" for="scene-4">4</label>
-
-      </div>
-      <div class="nav-button -next">
-        Next &gt;
-
-        <label class="nav-toggle" for="scene-1">1</label>
-        <label class="nav-toggle" for="scene-2">2</label>
-        <label class="nav-toggle" for="scene-3">3</label>
-        <label class="nav-toggle" for="scene-4">4</label>
-      </div>
-    </nav>
-
-    <div class="layer" data-scene="1">
-      <h2 class="heading">
-        It's not late. It's time to save the ocean.
-      </h2>
-      <p class="paragraph">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae accusantium est autem amet minus, atque consequatur iure dolor id inventore sit magnam sint, voluptates deserunt beatae? Error eveniet quam dicta!
-      </p>
-    </div>
-
-    <div class="layer" data-scene="2">
-      <h2 class="heading">
-        Facts and Stats on Ocean Pollution
-      </h2>
-      <p class="paragraph">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, amet hic provident ipsa placeat ad. Excepturi distinctio consectetur voluptatibus rem deleniti ducimus officia natus, magnam aut architecto sint reprehenderit provident?
-      </p>
-    </div>
-
-    <div class="layer" data-scene="3">
-      <h2 class="heading">
-        Learn more about how you can help.
-      </h2>
-      <p class="paragraph">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, amet hic provident ipsa placeat ad. Excepturi distinctio consectetur voluptatibus rem deleniti ducimus officia natus, magnam aut architecto sint reprehenderit provident?
-      </p>
-    </div>
-
-    <div class="layer" data-scene="4">
-      <h2 class="heading">
-        Join the fight to defend our oceans.
-      </h2>
-      <p class="paragraph">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi temporibus explicabo aspernatur dignissimos veritatis. Voluptate quis quia sed totam quasi placeat, odio quam fuga consectetur voluptatibus praesentium tempore vel molestiae?
-      </p>
-    </div>
-
-  </div>
-</main>
-</div>
     </div>
   </q-page>
   <div ref="box" class="box"></div>
