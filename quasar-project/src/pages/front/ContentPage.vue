@@ -1,5 +1,4 @@
-<template>
-  <!-- 上方購物頁面 -->
+<template><!-- 上方購物頁面 -->
   <q-page class="bg q-mx-auto" style="padding-top: 100px; padding-bottom: 25vh;width: 80%;">
     <div class="q-mx-auto q-py-lg q-px-xl" style="min-width: 70%">
       <q-breadcrumbs class="text-brown">
@@ -111,6 +110,7 @@ import { api } from '../../boot/axios.js'
 import { useRoute, useRouter } from 'vue-router'
 import { Swal } from 'sweetalert2'
 import { useUserStore } from '../../stores/user.js'
+import ProductCard from '../../components/ProductCard.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -230,8 +230,9 @@ $breakpoint-xl: 1024px;
   }
 }
 
-.bb {
-  border: 1px dodgerblue solid;
+.bg {
+  background: #F6F1EB;
+  // padding-top: -10rem;
 }
 
 .count {

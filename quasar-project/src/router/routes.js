@@ -62,6 +62,16 @@ const routes = [
           login: false,
           admin: false
         }
+      },
+      {
+        path: '/55',
+        name: '55',
+        component: () => import('src/pages/front/TTPage.vue'),
+        meta: {
+          title: '購物網 | 55',
+          login: false,
+          admin: false
+        }
       }
 
     ]

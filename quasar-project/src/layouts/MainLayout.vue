@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf" style="background: #F6F1EB">
 
-    <q-header reveal elevated class="bg bg-transparent text-primary">
+    <q-header style="padding-top: 5px;" reveal elevated class="bg text-primary">
 
       <!-- 第一行 -->
       <q-toolbar>
@@ -69,10 +69,10 @@
         <q-input filled v-model="form.account" label="Your account *" :rules="[rules.required, rules.length]" counter
           maxlength="20"></q-input>
         <!-- 密碼 -->
-        <q-input filled v-model="form.password" label="Your password *" :rules="[rules.required, rules.length]" counter
+        <q-input filled type="password" v-model="form.password" label="Your password *" :rules="[rules.required, rules.length]" counter
           maxlength="20"></q-input>
         <!-- 確認密碼 -->
-        <q-input filled v-model="form.passwordConfirm" label="Confirm Your password *" :rules="[rules.required, rules.length]"
+        <q-input filled type="password" v-model="form.passwordConfirm" label="Confirm Your password *" :rules="[rules.required, rules.length]"
           counter maxlength="20"></q-input>
 
         <div class="text-center" style="margin-top: 3rem;">
@@ -101,7 +101,7 @@
               <q-input filled v-model="formLog.account" label="Your account *"
                 :rules="[rules.required, rules.length]" counter maxlength="20"></q-input>
               <!-- 密碼 -->
-              <q-input filled v-model="formLog.password" label="Your password *" :rules="[rules.required, rules.length]" counter maxlength="20"></q-input>
+              <q-input filled type="password" v-model="formLog.password" label="Your password *" :rules="[rules.required, rules.length]" counter maxlength="20"></q-input>
             <div>
                 <!-- 登入 -->
                 <q-btn style="width: 100%; padding: 1rem; font-weight: 300;" label="登入" type="submit" :loading="loading" color="secondary" icon="arrow_forward"/>
@@ -241,6 +241,7 @@ const subLogin = async () => {
 
 .bg {
   backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.5);
 }
 
 .q-header .q-layout__shadow:after {

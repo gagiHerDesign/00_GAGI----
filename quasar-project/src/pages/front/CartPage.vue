@@ -54,7 +54,7 @@
           </h3>
         </div>
         <br>
-        <q-btn color="primary" label="結帳" :disabled="canCheckout" @click="onCheckoutBtnClick" style="width: 100%;"/>
+        <q-btn color="primary" label="結帳" @click="onCheckoutBtnClick" style="width: 100%;"/>
       </div>
     </div>
   </q-page>
@@ -91,13 +91,13 @@ const totalPrice = computed(() => {
   return cart.reduce((total, current) => {
     return total + (current.p_id.price * current.quantity)
   }, 0)
-})
-
-const canCheckout = computed(() => {
-  return cart.length > 0 && !cart.some(product => {
-    return !product.p_id.sell
-  })
 });
+
+// const canCheckout = computed(() => {
+//   return cart.length > 0 && !cart.some(product => {
+//     return !product.p_id.sell
+//   })
+// });
 
 (async () => {
   try {
