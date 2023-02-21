@@ -1,7 +1,7 @@
 #ProductPage {
   .proHero {
-    @import url('https://fonts.googleapis.com/css?family=Raleway:400,800');
-    @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+    // @import url('https://fonts.googleapis.com/css?family=Raleway:400,800');
+    // @import url('https://fonts.googleapis.com/css?family=Oswald:500');
 
 
     $color-teal: #0D3D4D;
@@ -15,7 +15,7 @@
       display: grid;
       grid-template-rows: 3fr 2fr;
       grid-template-columns: 4rem 1fr 1fr 5rem;
-      width: 90vw;
+      width: 99vw;
       height: 90vh;
       box-shadow: 0 .5rem 2rem rgba(black, 0.1);
       background-color: #fff;
@@ -90,7 +90,7 @@
       grid-row: 1 / 2;
       grid-column: 1 / -1;
       background-color: blue;
-      background-image: url(https://images.unsplash.com/photo-1593435712975-05b5d2af3310?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80);
+      background-image: url(https://images.unsplash.com/photo-1525615301846-b1e8aeafa1ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
       background-repeat: no-repeat;
       background-size: cover;
       overflow: hidden;
@@ -104,7 +104,6 @@
       font-weight: bold;
       font-family: 'Raleway', sans-serif;
       position: relative;
-      background-image: url(https://picsum.photos/1200/800?image=909);
       background-size: 160% auto;
       background-clip: text;
       -webkit-background-clip: text;
@@ -129,7 +128,7 @@
 
         >.subtitle {
           font-weight: bold;
-          color: $color-teal;
+          color: #000;
         }
 
         >.subtitle,
@@ -139,7 +138,7 @@
 
         >.subtitle,
         >.number {
-          color: $color-teal;
+          color: #000;
         }
 
         >.number {
@@ -164,7 +163,8 @@
         >.heading {
           margin: 0;
           font-size: 1rem;
-          color: $color-teal;
+          color: #000;
+          font-weight: 600;
         }
       }
     }
@@ -189,10 +189,19 @@
       text-transform: uppercase;
       overflow: hidden;
       color: #8CAAB7;
+      height: 8vh;
+      width: 8vh;
+      font-size: 25px;
+
 
       &.-next {
-        color: #2D4451;
-        background: #CEDBE5;
+        color: #ffffff;
+        background: #000000;
+      }
+      &.-prev {
+        width: 5vw;
+        color: #000000;
+        background: #ffffff00;
       }
 
       .nav-toggle {
@@ -250,7 +259,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 1em;
+      height: 1.2em;
       width: 100%;
       display: flex;
       align-items: flex-end;
@@ -289,9 +298,9 @@
       }
 
       .heading {
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
+        filter: drop-shadow(2px 2px 2px rgba(180, 180, 180, 0.7));
+        // backdrop-filter: blur(50px);
+        }
 
       .button {
         appearance: none;
@@ -313,9 +322,10 @@
       bottom: 0;
       right: 0;
       // or this... (preferred)
-      width: 100%;
+      width: 70%;
       height: 100%;
       margin: auto;
+      text-align: left;
     }
 
 

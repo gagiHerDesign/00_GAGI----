@@ -8,10 +8,11 @@
 
       <main id="site">
         <header class="top-nav">
-          @keyframers
         </header>
         <div class="ocean">
-          <div class="ocean-text">Stop</div>
+          <div class="ocean-text">
+            <img src="../../assets/img/product/product_hero(wide).png" style="height: 400px; margin-left: -30vw;">
+          </div>
         </div>
         <div class="left-side">
           <div class="page-numbers" data-total="04">
@@ -24,66 +25,46 @@
         <div class="hero">
           <div class="layer" data-scene="1">
             <h1 class="heading">
-              We can help<br />
-              to save<br />
-              the oceans
+              <img src="../../assets/img/title/purify-(白色字體透明背景).png">
             </h1>
-            <button class="button">
-              How can I help?
-            </button>
           </div>
           <div class="layer" data-scene="2">
             <h1 class="heading">
-              Saving nature,<br />
-              we save our<br />
-              future
+              <img src="../../assets/img/title/tone-(白色字體透明背景).png">
             </h1>
-            <button class="button">
-              How can I help?
-            </button>
           </div>
           <div class="layer" data-scene="3">
             <h1 class="heading">
-              Only you<br />
-              can prevent<br />
-              ocean fires
+              <img src="../../assets/img/title/renew-(白色字體透明背景).png">
             </h1>
-            <button class="button">
-              How can I help?
-            </button>
           </div>
           <div class="layer" data-scene="4">
-            <h1 class="heading">
-              Do not<br />
-              litter on<br />
-              the beach
-            </h1>
-            <button class="button">
-              How can I help?
-            </button>
+            <div class="heading">
+              <img src="../../assets/img/title/hydrate-(白色字體透明背景).png">
+            </div>
           </div>
         </div>
 
         <div class="left-content">
           <div class="layer" data-scene="1">
-            <div class="fact subtitle">More than</div>
-            <div class="fact number">1 000 000</div>
-            <div class="fact description">seabirds die yearly due to plastic debris</div>
+            <div class="fact subtitle text-orange-10">#保濕 #修護</div>
+            <div class="fact number">熱銷推薦</div>
+            <div class="fact description">[會員限定] 早安淨膚煥白組</div>
           </div>
           <div class="layer" data-scene="2">
-            <div class="fact subtitle">The largest garbage patch is</div>
-            <div class="fact number">1 760 000 m<sup>2</sup></div>
-            <div class="fact description">and is 10m deep</div>
+            <div class="fact subtitle text-orange-10">#敏感肌膚 #亮白</div>
+            <div class="fact number">小編精選</div>
+            <div class="fact description">[好評熱賣] 茶樹家族保濕水乳組</div>
           </div>
           <div class="layer" data-scene="3">
-            <div class="fact subtitle">More than</div>
-            <div class="fact number">700 000</div>
-            <div class="fact description">species call the ocean their home</div>
+            <div class="fact subtitle text-orange-10">#保濕 #修護</div>
+            <div class="fact number">現正優惠</div>
+            <div class="fact description">[會員限定] 早安淨膚煥白組</div>
           </div>
           <div class="layer" data-scene="4">
-            <div class="fact subtitle">There is an estimated</div>
-            <div class="fact number">12 000 000</div>
-            <div class="fact description">metric tons of plastic in the ocean</div>
+            <div class="fact subtitle text-orange-10">#敏感肌膚 #亮白</div>
+            <div class="fact number">熱銷產品</div>
+            <div class="fact description">[好評熱賣] 茶樹家族保濕水乳組</div>
           </div>
         </div>
         <div class="right-content">
@@ -99,7 +80,7 @@
 
             </div>
             <div class="nav-button -next">
-              Next &gt;
+               &gt;
 
               <label class="nav-toggle" for="scene-1">1</label>
               <label class="nav-toggle" for="scene-2">2</label>
@@ -110,44 +91,41 @@
 
           <div class="layer" data-scene="1">
             <h2 class="heading">
-              It's not late. It's time to save the ocean.
+              SUSI茶樹極效修護安瓶 30ml
             </h2>
             <p class="paragraph">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae accusantium est autem amet minus, atque
-              consequatur iure dolor id inventore sit magnam sint, voluptates deserunt beatae? Error eveniet quam dicta!
+              專為疲勞肌、熬夜肌打造的高效能精華
+現代人因為工作加班、熬夜追劇，各種生活壓力導致肌膚自我修護力下降，
+紅茶精華強大的修護與抗氧化效果，緩解肌膚的疲勞、煥回原有的彈潤活力。
             </p>
           </div>
 
           <div class="layer" data-scene="2">
             <h2 class="heading">
-              Facts and Stats on Ocean Pollution
+              SUSI茶樹亮顏控油底妝組 400ml
             </h2>
             <p class="paragraph">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, amet hic provident ipsa placeat ad.
-              Excepturi distinctio consectetur voluptatibus rem deleniti ducimus officia natus, magnam aut architecto
-              sint reprehenderit provident?
+打造粉紅水亮肌添加茶樹萃取、甜菜鹼以及菸鹼胺，能夠幫助肌膚同時提升保濕度及亮白肌膚。亮顏霜同時具有素顏霜&防曬二合一功效。輕乳霜質地輕薄水潤，SPF50+高防曬係數，打造粉嫩的裸妝素顏感，粉潤水光貼膚科技，校正膚色不均及增加持妝度，保濕&細滑質地的亮顏霜，使用在肌膚上，能夠打造出如同櫻花般粉嫩光澤的肌膚。
             </p>
           </div>
 
           <div class="layer" data-scene="3">
             <h2 class="heading">
-              Learn more about how you can help.
+              SUSI茶樹極效修護安瓶 30ml
             </h2>
             <p class="paragraph">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, amet hic provident ipsa placeat ad.
-              Excepturi distinctio consectetur voluptatibus rem deleniti ducimus officia natus, magnam aut architecto
-              sint reprehenderit provident?
+              專為疲勞肌、熬夜肌打造的高效能精華
+現代人因為工作加班、熬夜追劇，各種生活壓力導致肌膚自我修護力下降，
+紅茶精華強大的修護與抗氧化效果，緩解肌膚的疲勞、煥回原有的彈潤活力。
             </p>
           </div>
 
           <div class="layer" data-scene="4">
             <h2 class="heading">
-              Join the fight to defend our oceans.
+              SUSI茶樹亮顏控油底妝組 400ml
             </h2>
             <p class="paragraph">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi temporibus explicabo aspernatur dignissimos
-              veritatis. Voluptate quis quia sed totam quasi placeat, odio quam fuga consectetur voluptatibus
-              praesentium tempore vel molestiae?
+打造粉紅水亮肌添加茶樹萃取、甜菜鹼以及菸鹼胺，能夠幫助肌膚同時提升保濕度及亮白肌膚。亮顏霜同時具有素顏霜&防曬二合一功效。輕乳霜質地輕薄水潤，SPF50+高防曬係數，打造粉嫩的裸妝素顏感，粉潤水光貼膚科技，校正膚色不均及增加持妝度，保濕&細滑質地的亮顏霜，使用在肌膚上，能夠打造出如同櫻花般粉嫩光澤的肌膚。
             </p>
           </div>
 
