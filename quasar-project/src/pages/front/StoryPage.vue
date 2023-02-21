@@ -2,7 +2,10 @@
   <div id="storyPage">
   <q-page class="bg text-center" style="padding-top: 100px">
       <div class="hero">
-        .
+        <img src="../../assets/img/story/story.png">
+        <img src="../../assets/img/story/理念故事su.png">
+        <img src="../../assets/img/story/理念故事si.png">
+        <img src="../../assets/img/story/87632-wick-line-2.json" alt="">
       </div>
     <p>我是品牌理念</p>
     <p v-for="n in 55" :key="n">

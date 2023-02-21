@@ -1,9 +1,15 @@
 #storyPage{
   .hero{
     width: 99vw;
-    height: 100vh;
-    background-image: url("../assets/img/story/story.png");
-    border: 10px saddlebrown solid;
+    height: 200vh;
+    position: relative;
+    img{
+      width: 99vw;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
   .mySwiper{
     height: 50vh;
