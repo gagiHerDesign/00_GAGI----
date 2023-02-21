@@ -211,7 +211,7 @@
       </div>
       <!-- 一個視差的地方 -->
       <q-parallax src="../../assets/img/front/大圖2.jpg" style="height: 30vh;">
-        <img src="../../assets/img/logo/logo-front.svg" >
+        <img src="../../assets/img/logo/logo-front.svg" style="height: 40%;" >
       </q-parallax>
       <!-- 種樹去 -->
       <div id="plant" class=" row text-center">

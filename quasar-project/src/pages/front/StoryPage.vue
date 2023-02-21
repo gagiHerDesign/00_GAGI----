@@ -1,10 +1,9 @@
 <template>
   <div id="storyPage">
   <q-page class="bg text-center" style="padding-top: 100px">
-    <img
-      src="../../assets/img/story/story.png"
-      style="width:99vw;"
-      >
+      <div class="hero">
+        .
+      </div>
     <p>我是品牌理念</p>
     <p v-for="n in 55" :key="n">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci, dolore
