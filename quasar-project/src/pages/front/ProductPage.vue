@@ -1,5 +1,5 @@
 <template>
-  <q-page id="ProductPage" class="bg text-center" style="padding-top: 100px; padding-bottom: 250vh;">
+  <q-page id="ProductPage" class="bg text-center" style="padding-top: 100px; padding-bottom: 30vh;">
     <div class="proHero">
       <input type="radio" name="scene" id="scene-1" value="1" checked />
       <input type="radio" name="scene" id="scene-2" value="2" />
@@ -132,27 +132,87 @@
         </div>
       </main>
     </div>
-    <h1>我是商品總覽</h1>
-    <!-- tabs -->
-    123
+    <div class="container">
+    <q-breadcrumbs class="text-brown">
+        <template v-slot:separator>
+          <q-icon size="1.5em" name="chevron_right" color="primary" />
+        </template>
+
+        <q-breadcrumbs-el label="首頁" icon="home" to="/" />
+        <q-breadcrumbs-el label="產品系列" icon="widgets" to="/products" />
+      </q-breadcrumbs></div>
+    <!-- 標籤 -->
+    <div class="menu">
+
     <q-tabs
-          v-model="opentab"
-          class="text-teal"
-          v-for="(tab, i) in tabs"
-          :key="i"
+          v-model="tab"
+          class="text-grey"
+          active-color="primary"
+          vertical
+          style="width: 10vw;"
         >
-          <!-- <q-tab name="mails" icon="mail" label="Mails" />
-          <q-tab name="alarms" icon="alarm" label="Alarms" />
-          <q-tab name="movies" icon="movie" label="Movies" /> -->
+          <q-tab name="所有商品" label="所有商品" style="font-weight: 900;"/>
+          <q-tab name="淨膚保養" label="淨膚保養" />
+          <q-tab name="沐浴清潔" label="沐浴清潔" />
+          <q-tab name="空間香氛" label="空間香氛" />
         </q-tabs>
-    <!-- 卡片片 -->
+
+        <q-tab-panels
+        v-model="tab"
+        animated
+        transition-prev="jump-up"
+        transition-next="jump-up"
+        style="background: #F6F1EB;width: 99vw;overflow: hidden"
+        >
+          <q-tab-panel name="所有商品">
+            <!-- 卡片片 -->
     <div class="proCards q-pa-xs">
-      <div class="row q-mx-auto" style="width:80%;">
+      <div class="row q-mx-auto">
         <div class="col-12 col-md-4" v-for="product in products" :key="product._id" style="margin-top: 5rem;">
           <ProductCard v-bind="product" />
         </div>
       </div>
     </div>
+          </q-tab-panel>
+          <q-tab-panel name="淨膚保養">
+            <div class="proCards q-pa-xs">
+      <div class="row q-mx-auto">
+        <div class="col-12 col-md-4" v-for="i in filterPro()" :key="i" style="margin-top: 5rem;">
+          <ProductCard v-bind="i" />
+        </div>
+      </div>
+    </div>
+          </q-tab-panel>
+
+          <q-tab-panel name="沐浴清潔">
+            <div class="proCards q-pa-xs">
+      <div class="row q-mx-auto">
+        <div class="col-12 col-md-4" v-for="i in filterClean()" :key="i" style="margin-top: 5rem;">
+          <ProductCard v-bind="i" />
+        </div>
+      </div>
+    </div>
+          </q-tab-panel>
+
+          <q-tab-panel name="空間香氛">
+            <div class="proCards q-pa-xs">
+      <div class="row q-mx-auto">
+        <div class="col-12 col-md-4" v-for="i in filterSmell()" :key="i" style="margin-top: 5rem;">
+          <ProductCard v-bind="i" />
+        </div>
+      </div>
+    </div>
+          </q-tab-panel>
+        </q-tab-panels>
+</div>
+    <!-- 卡片片 -->
+    <!-- <div class="proCards q-pa-xs">
+      <div class="row q-mx-auto" style="width:80%;">
+        <div class="col-12 col-md-4" v-for="product in products" :key="product._id" style="margin-top: 5rem;">
+          <ProductCard v-bind="product" />
+        </div>
+      </div>
+    </div> -->
 
   </q-page>
 </template>
@@ -164,13 +224,19 @@ import Swal from 'sweetalert2'
 import ProductCard from '../../components/ProductCard.vue'
 
 const products = reactive([])
-const tabs = ['淨膚保養', '沐浴清潔', '空間香氛']
-// const opentab = computed(){
-//   return tab.filter(tab => tab._id ===tab.value)
-// }
-const opentab = ref('淨膚保養');
 
-(async () => {
+const filterPro = () => {
+  return products.filter(item => item.category === '淨膚保養')
+}
+const filterClean = () => {
+  return products.filter(item => item.category === '沐浴清潔')
+}
+const filterSmell = () => {
+  return products.filter(item => item.category === '空間香氛')
+}
+const tab = ref('淨膚保養')
+
+;(async () => {
   try {
     const { data } = await api.get('/products')
     products.push(...data.result)

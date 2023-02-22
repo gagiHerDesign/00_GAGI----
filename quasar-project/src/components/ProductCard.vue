@@ -77,8 +77,8 @@ defineProps({
 }
 
 .q-card {
-  width: 350px;
-  background: rgba(255, 255, 17, 0);
+  width: 250px;
+  background: rgba(205, 205, 28, 0);
 
   .q-img__image {
     filter: drop-shadow(5px 5px 1px #c7bfbc);
@@ -87,12 +87,13 @@ defineProps({
 .cardLook{
   height: 100%;
   .cardImg{
+    transform: scale(1.2);
     transition: 1s;
   }
   &:hover{
     background:linear-gradient(0deg, rgb(255, 255, 255) 70%, rgba(255, 255, 255, 0.09) 30%);
     .cardImg{
-      transform: scale(1.2);
+      transform: scale(1.3);
       transition: 1s;
     }
   }

@@ -351,8 +351,17 @@
       padding: 0;
     }
   }
-
-  .proCards {
-    border: #000 1px solid;
+  .container{
+    width: 80%;
+    padding-top: 10vh;
+    margin: auto;
+    display: flex;
+    justify-content: end;
+  }
+  .menu{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    overflow: hidden;
   }
 }
