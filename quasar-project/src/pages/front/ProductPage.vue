@@ -134,16 +134,17 @@
     </div>
     <h1>我是商品總覽</h1>
     <!-- tabs -->
-    <!-- <q-tabs
+    123
+    <q-tabs
           v-model="opentab"
           class="text-teal"
-          v-for="tab in tabs"
-          :key="tab._id"
+          v-for="(tab, i) in tabs"
+          :key="i"
         >
-          <q-tab name="mails" icon="mail" label="Mails" />
+          <!-- <q-tab name="mails" icon="mail" label="Mails" />
           <q-tab name="alarms" icon="alarm" label="Alarms" />
-          <q-tab name="movies" icon="movie" label="Movies" />
-        </q-tabs> -->
+          <q-tab name="movies" icon="movie" label="Movies" /> -->
+        </q-tabs>
     <!-- 卡片片 -->
     <div class="proCards q-pa-xs">
       <div class="row q-mx-auto" style="width:80%;">
@@ -157,17 +158,17 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import { api } from '../../boot/axios.js'
 import Swal from 'sweetalert2'
 import ProductCard from '../../components/ProductCard.vue'
-// import { filter } from 'compression';
 
-const products = reactive([]);
-// const tabs = { _id: 111, value: 555 };
+const products = reactive([])
+const tabs = ['淨膚保養', '沐浴清潔', '空間香氛']
 // const opentab = computed(){
 //   return tab.filter(tab => tab._id ===tab.value)
 // }
+const opentab = ref('淨膚保養');
 
 (async () => {
   try {

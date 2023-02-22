@@ -1,9 +1,14 @@
-#storyPage{
-  .hero{
+#storyPage {
+  .bg {
+    background: #F6F1EB;
+  }
+
+  .hero {
     width: 99vw;
     height: 200vh;
     position: relative;
-    img{
+
+    img {
       width: 99vw;
       position: absolute;
       top: 50%;
@@ -11,7 +16,126 @@
       transform: translate(-50%, -50%);
     }
   }
-  .mySwiper{
-    height: 50vh;
+
+  .container {
+    width: 85%;
+    margin: auto;
+    border: 1px solid saddlebrown;
+
+    .row {
+      margin-bottom: 30vh;
+    }
+
+    .sec01 {
+      .info {
+        text-align: left;
+        font-size: calc(10px + 0.5vw);
+        line-height: 2;
+        font-weight: 600;
+      }
+
+      .pic {
+        position: relative;
+
+        .dot {
+          width: 10vw;
+          position: absolute;
+          top: 92%;
+          left: 86%;
+          transform: translate(-50%, -50%);
+          filter: invert(18%) sepia(18%) saturate(893%) hue-rotate(352deg) brightness(90%) contrast(91%);
+        }
+
+        .leaf {
+          width: 15vw;
+          position: absolute;
+          top: 46%;
+          left: 9%;
+          transform: translate(-50%, -50%);
+        }
+
+        .furn {
+          border-radius: 50%;
+        }
+      }
+
+      .title {
+        transition: 2s;
+      }
+
+      &:hover {
+        .title {
+          transition: 0.5s;
+          filter: invert(74%) sepia(59%) saturate(476%) hue-rotate(336deg) brightness(102%) contrast(98%);
+        }
+      }
+    }
+
+    .sec02 {
+      .climb {
+        height: 90vh;
+        border-radius: 45% 45% 0 0;
+      }
+
+      .info {
+        text-align: left;
+        font-size: calc(10px + 0.5vw);
+        line-height: 2;
+        font-weight: 600;
+        margin: 2rem;
+      }
+
+      .title {
+        transition: 2s;
+      }
+
+      &:hover {
+        .title {
+          transition: 0.5s;
+          filter: invert(74%) sepia(59%) saturate(476%) hue-rotate(336deg) brightness(102%) contrast(98%);
+        }
+      }
+    }
+    .sec03 {
+      .pic{
+        width: 40%;
+        position: relative;
+        .wash{
+          position: absolute;
+          top: 50%;
+          left:80%;
+          transform: translate(-50%, -50%);
+        }
+        .box{
+          width: 110%;
+          position: absolute;
+          top: 54%;
+          left: 30%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .info{
+        text-align: left;
+        font-size: calc(10px + 0.5vw);
+        line-height: 2;
+        font-weight: 600;
+        margin: 2rem;
+      }
+
+      .title {
+        transition: 2s;
+      }
+
+      &:hover {
+        .title {
+          transition: 0.5s;
+          filter: invert(74%) sepia(59%) saturate(476%) hue-rotate(336deg) brightness(102%) contrast(98%);
+        }
+      }
+    }
+  }
+
+  .bb {
+    border: 1px solid blueviolet;
   }
 }
