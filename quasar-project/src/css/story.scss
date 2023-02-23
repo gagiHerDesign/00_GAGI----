@@ -17,10 +17,16 @@
     }
   }
 
+  .wrap{
+position: relative;
+  
   .container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 85%;
     margin: auto;
-    border: 1px solid saddlebrown;
 
     .row {
       margin-bottom: 30vh;
@@ -74,15 +80,17 @@
     .sec02 {
       .climb {
         height: 90vh;
-        border-radius: 45% 45% 0 0;
+        // border-radius: 45% 45% 0 0;
+        border-top-left-radius:205px;
+        border-top-right-radius:205px;
       }
 
       .info {
-        text-align: left;
+        text-align: center;
         font-size: calc(10px + 0.5vw);
         line-height: 2;
         font-weight: 600;
-        margin: 2rem;
+        margin: 3rem;
       }
 
       .title {
@@ -133,9 +141,31 @@
         }
       }
     }
+    .sec04{
+      .info{
+        font-weight: 600;
+        font-size: calc(15px + 0.5vw);
+        text-align: center;
+        line-height: 2;
+      }
+      .btn{
+        width: 200px;
+        height: 50px;
+        font-weight: 900;
+        padding: 0;
+      }
+    }
   }
 
-  .bb {
-    border: 1px solid blueviolet;
+  .run{
+    width: 90%;
+    margin: auto;
+    margin-top: -40vh;
+    z-index: 9000;
+  .cls-1{
+    fill:#6fb400;
   }
+  }
+}
+
 }
