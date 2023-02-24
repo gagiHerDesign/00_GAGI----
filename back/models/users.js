@@ -13,6 +13,17 @@ const cartSchema = new Schema({
     required: [true, '缺少數量']
   }
 })
+const plantSchema = new Schema({
+  t_id: {
+    type: ObjectId,
+    ref: 'trees',
+    required: [true, '缺少商品']
+  },
+  quantity: {
+    type: Number,
+    required: [true, '缺少數量']
+  }
+})
 
 const schema = new Schema({
   account: {
@@ -63,6 +74,10 @@ const schema = new Schema({
   },
   cart: {
     type: [cartSchema],
+    default: []
+  },
+  plantCart: {
+    type: [plantSchema],
     default: []
   },
   role: {

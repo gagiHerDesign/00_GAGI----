@@ -54,6 +54,16 @@ const routes = [
         }
       },
       {
+        path: '/tree',
+        name: 'tree',
+        component: () => import('src/pages/front/TreePage.vue'),
+        meta: {
+          title: '購物網 | 茶樹總覽',
+          login: true,
+          admin: false
+        }
+      },
+      {
         path: '/test',
         name: 'test',
         component: () => import('src/pages/front/TestPage.vue'),
@@ -115,7 +125,17 @@ const routes = [
         name: '/admin/plant',
         component: () => import('src/pages/admin/AdminPlant.vue'),
         meta: {
-          title: '管理中心 | 茶樹狀態',
+          title: '管理中心 | 茶樹園區',
+          login: true,
+          admin: true
+        }
+      },
+      {
+        path: '/admin/tree',
+        name: '/admin/tree',
+        component: () => import('src/pages/admin/AdminTree.vue'),
+        meta: {
+          title: '管理中心 | 茶樹資料',
           login: true,
           admin: true
         }

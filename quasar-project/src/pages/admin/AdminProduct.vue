@@ -4,14 +4,15 @@
       <h6 style="font-weight: 600;">商品管理</h6>
 
       <q-btn label="新增商品" color="primary" @click="openMenu(-1)" size="15px" class="q-px-xl q-py-xs"
-        style="position: absolute; top: 2%; left: 83%; transform: translate(-50%, -50%);"/>
+        />
       <q-dialog v-model="form.dialog" persistent>
-        <div id="q-app" style="max-height: 70vh; background: #FFFEF2; margin: auto;font-weight: 100;">
-          <div class="cancel" transition-show="rotate">
-            <img src="../../assets/img/logo/XX.svg" size="50px" v-close-popup>
-          </div>
-          <div class="q-mx-auto q-py-lg" style="max-width: 500px">
+
+        <div id="q-app" style="min-height: 50vh; max-width: 500px;background: #FFFEF2; margin: auto;font-weight: 100;">
+          <div class="q-mx-auto q-py-lg q-px-xl" style="min-width: 400px;">
             <h6 style="font-weight: 600;">{{ form._id.length > 0 ? '編輯商品' : '新增商品' }}</h6>
+            <div class="cancel">
+          <img src="../../assets/img/logo/XX.svg" size="50px" v-close-popup>
+        </div>
             <q-form @submit="submit" class="q-gutter-md">
               <!-- 新增圖片 -->
               <div>
@@ -219,8 +220,8 @@ const submit = async () => {
 
 .cancel {
   position: absolute;
-  top: 22%;
-  left: 68%;
+  top: 8%;
+  left: 66%;
   transform: translate(-50%, -50%);
   z-index: 9000;
 }

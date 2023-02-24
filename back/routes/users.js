@@ -2,7 +2,7 @@ import { Router } from 'express'
 import content from '../middleware/content.js'
 import * as auth from '../middleware/auth.js'
 import admin from '../middleware/admin.js'
-import { register, login, logout, extend, getUser, editCart, getCart, getAllUsers } from '../controllers/users.js'
+import { register, login, logout, extend, getUser, editCart, getCart, getAllUsers, editPlantCart, getPlantCart } from '../controllers/users.js'
 
 const router = Router()
 
@@ -16,5 +16,7 @@ router.get('/all', auth.jwt, admin, getAllUsers)
 // 加入購物車
 router.post('/cart', content('application/json'), auth.jwt, editCart)
 router.get('/cart', auth.jwt, getCart)
-
+// 加入茶樹願望清單
+router.post('/plantCart', content('application/json'), auth.jwt, editPlantCart)
+router.get('/plantCart', auth.jwt, getPlantCart)
 export default router

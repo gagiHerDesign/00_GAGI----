@@ -9,6 +9,7 @@ export const useUserStore = defineStore('user', () => {
   const account = ref('')
   const email = ref('')
   const cart = ref(0)
+  const plantCart = ref(0)
   const role = ref(0)
 
   const isLogin = computed(() => {
@@ -27,6 +28,7 @@ export const useUserStore = defineStore('user', () => {
       account.value = data.result.account
       email.value = data.result.email
       cart.value = data.result.cart
+      plantCart.value = data.result.plantCart
       role.value = data.result.role
       Swal.fire({
         icon: 'success',
@@ -49,6 +51,7 @@ export const useUserStore = defineStore('user', () => {
       account.value = ''
       role.value = 0
       cart.value = 0
+      plantCart.value = 0
       router.push('/vip')
       Swal.fire({
         icon: 'success',
@@ -70,6 +73,7 @@ export const useUserStore = defineStore('user', () => {
       account.value = data.result.account
       email.value = data.result.email
       cart.value = data.result.cart
+      plantCart.value = data.result.plantCart
       role.value = data.result.role
     } catch (error) {
       logout()
@@ -103,6 +107,33 @@ export const useUserStore = defineStore('user', () => {
       })
     }
   }
+  const editPlantCart = async ({ _id, quantity }) => {
+    // 表示還沒有登入
+    if (token.value.length === 0) {
+      Swal.fire({
+        icon: 'error',
+        title: '失敗',
+        text: '請先登入'
+      })
+      router.push('/')
+      return
+    }
+    try {
+      const { data } = await apiAuth.post('/users/plantCart', { t_id: _id, quantity: parseInt(quantity) })
+      plantCart.value = data.result
+      Swal.fire({
+        icon: 'success',
+        title: '成功',
+        text: '加入茶樹願望清單成功'
+      })
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: '失敗',
+        text: error?.response?.data?.message || '發生錯誤'
+      })
+    }
+  }
   const checkout = async () => {
     try {
       await apiAuth.post('/orders')
@@ -120,9 +151,26 @@ export const useUserStore = defineStore('user', () => {
       })
     }
   }
+  const treecheckout = async () => {
+    try {
+      await apiAuth.post('/myplants')
+      plantCart.value = 0
+      Swal.fire({
+        icon: 'success',
+        title: '成功',
+        text: '結帳成功'
+      })
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: '失敗',
+        text: error?.response?.data?.message || '發生錯誤'
+      })
+    }
+  }
 
   return {
-    token, account, email, cart, role, login, isLogin, isAdmin, avatars, logout, getUser, editCart, checkout
+    token, account, email, cart, plantCart, role, login, isLogin, isAdmin, avatars, logout, getUser, editCart, checkout, editPlantCart, treecheckout
   }
 }, {
   persist: {

@@ -82,7 +82,17 @@
             </q-item-section>
 
             <q-item-section>
-              茶樹狀態
+              茶樹園區
+            </q-item-section>
+
+          </q-item>
+          <q-item clickable v-ripple to="/admin/tree">
+            <q-item-section avatar>
+              <q-icon name="navigation" />
+            </q-item-section>
+
+            <q-item-section>
+              茶樹資料
             </q-item-section>
 
           </q-item>

@@ -5,6 +5,8 @@ import cors from 'cors'
 import userRoute from './routes/users.js'
 import productRoute from './routes/products.js'
 import orderRoute from './routes/orders.js'
+import treeRoute from './routes/trees.js'
+import myplantRoute from './routes/myplants.js'
 import './passport/passport.js'
 
 mongoose.connect(process.env.DB_URL)
@@ -37,6 +39,8 @@ app.use((_, req, res, next) => {
 app.use('/users', userRoute)
 app.use('/products', productRoute)
 app.use('/orders', orderRoute)
+app.use('/trees', treeRoute)
+app.use('/myplants', myplantRoute)
 
 app.get('/', (req, res) => {
   res.status(200).json({ success: true, message: '' })
