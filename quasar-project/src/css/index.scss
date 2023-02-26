@@ -476,10 +476,10 @@ $breakpoint-xl: 1024px;
         height: $w !important;
         border-radius: 50%;
         padding: 2rem;
-        position: absolute;
-        left: 150vh;
-        top: 70vh;
-        transform: translate(-50%, -50%);
+        // position: absolute;
+        // left: 80vh;
+        // top: 80vh;
+        // transform: translate(-50%, -50%);
         color: #000000;
         z-index: 9000;
 
@@ -490,10 +490,11 @@ $breakpoint-xl: 1024px;
       }
 
       .swiper-button-prev {
+        display: none;
         border-radius: 50%;
         padding: 2rem;
         position: absolute;
-        left: 135vh;
+        left: 1vh;
         top: 70vh;
         transform: translate(-50%, -50%);
         color: #000000;

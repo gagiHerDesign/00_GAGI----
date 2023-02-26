@@ -8,11 +8,13 @@
       <q-dialog v-model="form.dialog" persistent>
 
         <div id="q-app" style="min-height: 50vh; max-width: 500px;background: #FFFEF2; margin: auto;font-weight: 100;">
-          <div class="q-mx-auto q-py-lg q-px-xl" style="min-width: 400px;">
-            <h6 style="font-weight: 600;">{{ form._id.length > 0 ? '編輯商品' : '新增商品' }}</h6>
-            <div class="cancel">
-          <img src="../../assets/img/logo/XX.svg" size="50px" v-close-popup>
-        </div>
+          <q-toolbar>
+            <q-toolbar-title>
+            </q-toolbar-title>
+            <q-btn icon="close" flat round dense v-close-popup />
+          </q-toolbar>
+          <div class="q-mx-auto q-py-md q-px-xl" style="min-width: 400px;">
+            <p style="font-weight: 600;font-size: calc(15px + 1vw);">{{ form._id.length > 0 ? '編輯商品' : '新增商品' }}</p>
             <q-form @submit="submit" class="q-gutter-md">
               <!-- 新增圖片 -->
               <div>

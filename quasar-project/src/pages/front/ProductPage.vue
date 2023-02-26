@@ -234,7 +234,7 @@ const filterClean = () => {
 const filterSmell = () => {
   return products.filter(item => item.category === '空間香氛')
 }
-const tab = ref('淨膚保養')
+const tab = ref('所有商品')
 
 ;(async () => {
   try {

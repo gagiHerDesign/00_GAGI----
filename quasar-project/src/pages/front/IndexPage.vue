@@ -268,19 +268,7 @@ export default {
   setup () {
     onMounted(() => {
       const tl1 = gsap.timeline({
-        repeat: -1, repeatDelay: 0.5
-        // scrollTrigger: {
-        //   trigger: '.services_popup',
-        //   start: '80% 20%',
-        //   end: '10% 70%',
-        //   scrub: 3,
-        //   markers: true
-        // }
-        // defaults: {
-        //   // duration: 2,
-        //   // ease: 'back'
-        // },
-        // repeat: -1
+        repeat: -1
       })
       tl1.from('.popimg', {
         duration: 2,
@@ -292,6 +280,15 @@ export default {
         rotation: 15
         // scale: 0.5
       })
+      // gsap.from('.popup', {
+      //   scrollTrigger: {
+      //     trigger: '.services_popup',
+      //     start: 'top 50%',
+      //     end: '100% 50%'
+      //   },
+      //   yPercent: 50,
+      //   scale: 0.1
+      // })
       const tlText = gsap.timeline({ repeat: -1, repeatDelay: 0.5 })
 
       tlText.from('#role1', { opacity: 0, duration: 2 })

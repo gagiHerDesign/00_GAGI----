@@ -1,4 +1,5 @@
 #storyPage {
+  overflow-x: hidden;
   .bg {
     background: #F6F1EB;
   }
@@ -10,10 +11,10 @@
 
     img {
       width: 99vw;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      // position: absolute;
+      // top: 50%;
+      // left: 50%;
+      // transform: translate(-50%, -50%);
     }
   }
 
@@ -47,7 +48,7 @@ position: relative;
           width: 10vw;
           position: absolute;
           top: 92%;
-          left: 86%;
+          left: 60%;
           transform: translate(-50%, -50%);
           filter: invert(18%) sepia(18%) saturate(893%) hue-rotate(352deg) brightness(90%) contrast(91%);
         }
@@ -55,8 +56,8 @@ position: relative;
         .leaf {
           width: 15vw;
           position: absolute;
-          top: 46%;
-          left: 9%;
+          top: 80%;
+          left: 19%;
           transform: translate(-50%, -50%);
         }
 
@@ -66,6 +67,7 @@ position: relative;
       }
 
       .title {
+        height: 20vh;
         transition: 2s;
       }
 
@@ -95,6 +97,7 @@ position: relative;
 
       .title {
         transition: 2s;
+        height: 20vh;
       }
 
       &:hover {
@@ -132,6 +135,7 @@ position: relative;
 
       .title {
         transition: 2s;
+        height: 20vh;
       }
 
       &:hover {
@@ -142,6 +146,16 @@ position: relative;
       }
     }
     .sec04{
+      .title {
+        transition: 2s;
+      }
+
+      &:hover {
+        .title {
+          transition: 0.5s;
+          filter: invert(74%) sepia(59%) saturate(476%) hue-rotate(336deg) brightness(102%) contrast(98%);
+        }
+      }
       .info{
         font-weight: 600;
         font-size: calc(15px + 0.5vw);
@@ -153,6 +167,17 @@ position: relative;
         height: 50px;
         font-weight: 900;
         padding: 0;
+        filter: drop-shadow(0px 15px 0px rgb(252, 190, 100));
+  animation: neon 2s ease-in-out infinite alternate;
+      }
+      @keyframes neon {
+        0%,
+        100% {
+          filter: drop-shadow(0px 15px 0px rgb(253, 195, 189));
+        }
+        50% {
+          filter: drop-shadow(0px 15px 0px rgb(252, 190, 100));
+        }
       }
     }
   }
@@ -162,7 +187,7 @@ position: relative;
     margin: auto;
     margin-top: -40vh;
     z-index: 9000;
-  .cls-1{
+  .cls-1, .cls-2, .cls-3{
     fill:#6fb400;
   }
   }

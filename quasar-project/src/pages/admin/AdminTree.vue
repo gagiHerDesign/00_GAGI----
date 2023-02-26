@@ -1,21 +1,23 @@
 <template>
-  <q-page class="bg">
+  <q-page id="adminTree" class="bg">
     <div class="container">
       <h6 style="font-weight: 600;">茶樹管理</h6>
       <q-btn class="q-px-xl q-py-xs" label="新增茶樹" color="primary" size="15px" @click="openMenu(-1)" />
+      <q-separator />
       <q-dialog v-model="form.dialog" persistent>
 
         <div id="q-app" style="min-height: 50vh; max-width: 500px;background: #FFFEF2; margin: auto;font-weight: 100;">
-          <div class="q-mx-auto q-py-lg q-px-xl" style="min-width: 400px;">
-            <h6 style="font-weight: 600;">{{ form._id.length > 0 ? '編輯商品' : '新增商品' }}</h6>
-            <div class="cancel">
-              <img src="../../assets/img/logo/XX.svg" size="50px" v-close-popup>
-            </div>
+          <q-toolbar>
+            <q-toolbar-title>
+            </q-toolbar-title>
+            <q-btn icon="close" flat round dense v-close-popup />
+          </q-toolbar>
+          <div class="q-mx-auto q-py-md q-px-xl" style="min-width: 400px;">
+            <h6 style="font-weight: 600;">{{ form._id.length > 0 ? '編輯茶樹資料' : '新增茶樹資料' }}</h6>
             <q-form @submit="submit" class="q-gutter-md">
               <!-- 新增圖片 -->
               <div>
                 <v-image-input v-model="form.image" style="margin: 2rem;" />
-                <q-img v-if="form.image" :src="form.image" style="width: 80%" />
                 <q-tooltip anchor="center right" self="center left" :offset="[-200, 10]">
                   <strong>點擊新增圖片 : </strong>
                   <li>大小限制2mb</li>
@@ -28,15 +30,51 @@
               <!-- 商品價格 -->
               <q-input class="wid" filled v-model="form.price" label="茶樹價格" :rules="[rules.required, rules.price]" />
               <!-- 商品說明 -->
-              <q-input class="wid" filled v-model="form.description" label="商品說明" clearable type="textarea" color="red-12"
+              <q-input class="wid" filled v-model="form.description" label="茶樹說明" clearable type="textarea" color="red-12"
                 @keydown="processTextareaFill" @focus="processTextareaFill" :rules="[rules.required]" />
-              <!-- 商品容量 -->
-              <q-input class="wid" filled v-model="form.volume" label="商品容量" :rules="[rules.required]" />
-              <!-- 商品分類 -->
-              <q-select class="wid" filled v-model="form.area" :options="areas" label="商品分類"
+              <!-- 茶樹分區 -->
+              <q-select class="wid" filled v-model="form.area" :options="areas" label="茶樹園區"
                 :rules="[rules.required]" />
-              <!-- 上架 -->
-              <q-checkbox v-model="form.sell" label="上架商品" />
+              <!-- 有無認養者 -->
+              <q-toggle
+                v-model="form.adopt"
+                checked-icon="check"
+                color="green"
+                label="有無認養者"
+                unchecked-icon="clear"
+              />
+              <!-- 樹苗 -->
+              <q-toggle
+                v-model="form.kid"
+                checked-icon="check"
+                color="green"
+                label="樹苗狀態"
+                unchecked-icon="clear"
+              />
+              <!-- 開花 -->
+              <q-toggle
+                v-model="form.flower"
+                checked-icon="check"
+                color="green"
+                label="開花狀態"
+                unchecked-icon="clear"
+              />
+              <!-- 收成 -->
+              <q-toggle
+                v-model="form.harvest"
+                checked-icon="check"
+                color="green"
+                label="收成狀態"
+                unchecked-icon="clear"
+              />
+              <!-- 是否上架 -->
+              <q-toggle
+                v-model="form.sell"
+                checked-icon="check"
+                color="green"
+                label="上架狀態"
+                unchecked-icon="clear"
+              />
               <div class="text-center" style="margin-top: 3rem;">
                 <!-- 送出 -->
                 <q-btn label="送出" type="submit" :loading="loading" color="secondary"
@@ -47,6 +85,55 @@
           </div>
         </div>
       </q-dialog>
+
+      <div class="row q-my-md q-mx-auto q-gutter-xl">
+      <q-card class="col-3 my-card" flat
+      v-for="(tree, idx) in trees"
+            :key="tree._id">
+      <q-card-section horizontal>
+        <q-img
+          class="col-5"
+          :src="tree.image"
+        />
+        <q-card-section>
+          <p class="text-orange">編號</p>
+          <p style="font-weight: 600;font-size: 30px;">{{ tree.name }}</p>
+          <p>{{ tree.area }} | {{tree.adopt ? '已' : '未'}}認養</p>
+          <q-card-actions>
+          <q-btn color="secondary" @click="openMenu(idx)" label="MORE"/>
+        </q-card-actions>
+        </q-card-section>
+
+      </q-card-section>
+    </q-card>
+  </div>
+      <!-- list -->
+      <div style="max-width: 100%">
+        <div class="q-gutter-md">
+
+          <!-- 下面的商品們 -->
+          <!-- <q-item clickable v-ripple class="text-center" style="background: #fff;" v-for="(product, idx) in products"
+            :key="product._id">
+            <q-item-section>
+              <img :src="product.image" :aspect-ratio="1" :width="150" :height="150"
+                style="object-fit: cover; margin: auto;">
+            </q-item-section>
+            <q-item-section>{{ product.name }}</q-item-section>
+            <q-item-section>{{ product.price }} 元</q-item-section>
+            <q-item-section>
+              <q-toggle :label="` ${product.sell ? '有' : '未'} 上架`" v-model="product.sell" checked-icon="check"
+                color="green" unchecked-icon="clear" style="position: absolute;
+          left: 54%" />
+            </q-item-section>
+            <q-item-section>{{ product.category }}</q-item-section>
+            <q-item-section>
+              <div>
+                <q-btn round color="secondary" size="20px" icon="save_as" @click="openMenu(idx)" />
+              </div>
+            </q-item-section>
+          </q-item> -->
+        </div>
+      </div>
     </div>
   </q-page>
 </template>
@@ -178,3 +265,6 @@ const submit = async () => {
   }
 })()
 </script>
+<style lang="scss">
+@import '../../css/adminTree.scss';
+</style>
