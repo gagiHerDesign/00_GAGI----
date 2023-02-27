@@ -9,4 +9,18 @@
     width: 85%;
     margin: auto;
   }
+  .garden {
+    width: 70vw;
+    height: 50vh;
+    margin: 1rem;
+    padding: 2rem;
+    background-image: url(https://github.com/gagiHerDesign/00_GAGI----/blob/master/quasar-project/src/assets/img/admin/treeProduct.png?raw=true);
+    background-repeat: no-repeat;
+    img{
+      filter: drop-shadow(12px 12px 1px #fddc49);
+    }
+  }
+  .q-card__actions {
+    padding: 0;
+  }
 }

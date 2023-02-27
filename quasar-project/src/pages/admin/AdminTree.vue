@@ -1,8 +1,9 @@
 <template>
   <q-page id="adminTree" class="bg">
     <div class="container">
-      <h6 style="font-weight: 600;">茶樹管理</h6>
-      <q-btn class="q-px-xl q-py-xs" label="新增茶樹" color="primary" size="15px" @click="openMenu(-1)" />
+      <h6 style="font-weight: 600;">茶樹資料</h6>
+
+      <q-btn class="q-px-xl q-py-xs q-my-lg" label="新增茶樹" color="primary" size="15px" @click="openMenu(-1)" /><q-separator />
       <q-dialog v-model="form.dialog" persistent>
 
         <div id="q-app" style="min-height: 50vh; max-width: 500px;background: #FFFEF2; margin: auto;font-weight: 100;">
@@ -84,12 +85,7 @@
           </div>
         </div>
       </q-dialog>
-      <div class="garden">
 
-      </div>
-      <img class="q-my-lg" src="../../assets/img/admin/treeProduct.png">
-      <q-separator />
-      <h6 style="font-weight: 600;">茶樹資料</h6>
       <div class="row q-my-md q-mx-auto q-gutter-xl">
       <q-card class="col-3 my-card" flat
       v-for="(tree, idx) in trees"
@@ -111,33 +107,6 @@
       </q-card-section>
     </q-card>
   </div>
-      <!-- list -->
-      <div style="max-width: 100%">
-        <div class="q-gutter-md">
-
-          <!-- 下面的商品們 -->
-          <!-- <q-item clickable v-ripple class="text-center" style="background: #fff;" v-for="(product, idx) in products"
-            :key="product._id">
-            <q-item-section>
-              <img :src="product.image" :aspect-ratio="1" :width="150" :height="150"
-                style="object-fit: cover; margin: auto;">
-            </q-item-section>
-            <q-item-section>{{ product.name }}</q-item-section>
-            <q-item-section>{{ product.price }} 元</q-item-section>
-            <q-item-section>
-              <q-toggle :label="` ${product.sell ? '有' : '未'} 上架`" v-model="product.sell" checked-icon="check"
-                color="green" unchecked-icon="clear" style="position: absolute;
-          left: 54%" />
-            </q-item-section>
-            <q-item-section>{{ product.category }}</q-item-section>
-            <q-item-section>
-              <div>
-                <q-btn round color="secondary" size="20px" icon="save_as" @click="openMenu(idx)" />
-              </div>
-            </q-item-section>
-          </q-item> -->
-        </div>
-      </div>
     </div>
   </q-page>
 </template>
