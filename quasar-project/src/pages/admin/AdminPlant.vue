@@ -1,5 +1,5 @@
 <template>
-  <q-page id="adminTree" class="bg">
+  <q-page id="adminPlant" class="bg">
     <div class="container">
       <h6 style="font-weight: 600;">茶樹管理</h6>
       <q-btn class="q-px-xl q-py-xs" label="新增茶樹" color="primary" size="15px" @click="openMenu(-1)" />
@@ -87,13 +87,14 @@
       <div class="garden">
         <q-btn v-for="(tree, idx) in trees"
             :key="tree._id">
-            {{ tree.name }}
-            <img src="../../assets/img/admin/treeIcon.png">
-            <q-btn  @click="openMenu(idx)"/>
+            <p style="font-weight: 900;font-size: 30px; color: #000000;">{{ tree.name }}</p>
+
+            <q-btn  @click="openMenu(idx)">
+              <img src="../../assets/img/admin/treeIcon.png">
+            </q-btn>
           </q-btn>
       </div>
       <q-separator />
-      <h6 style="font-weight: 600;">茶樹資料</h6>
     </div>
   </q-page>
 </template>
@@ -226,5 +227,5 @@ const submit = async () => {
 })()
 </script>
 <style lang="scss">
-@import '../../css/adminTree.scss';
+@import '../../css/adminPlant.scss';
 </style>

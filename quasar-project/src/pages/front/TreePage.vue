@@ -1,3 +1,8 @@
 <template>
-  前台茶樹們
+  <q-page id="frontTree" class="bg">
+<div class="container">
+
+</div>
+  </q-page>
+
   </template>
