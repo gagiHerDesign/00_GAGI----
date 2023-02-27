@@ -3,7 +3,6 @@
     <div class="container">
       <h6 style="font-weight: 600;">茶樹管理</h6>
       <q-btn class="q-px-xl q-py-xs" label="新增茶樹" color="primary" size="15px" @click="openMenu(-1)" />
-      <q-separator />
       <q-dialog v-model="form.dialog" persistent>
 
         <div id="q-app" style="min-height: 50vh; max-width: 500px;background: #FFFEF2; margin: auto;font-weight: 100;">
@@ -85,7 +84,12 @@
           </div>
         </div>
       </q-dialog>
+      <div class="garden">
 
+      </div>
+      <img class="q-my-lg" src="../../assets/img/admin/treeProduct.png">
+      <q-separator />
+      <h6 style="font-weight: 600;">茶樹資料</h6>
       <div class="row q-my-md q-mx-auto q-gutter-xl">
       <q-card class="col-3 my-card" flat
       v-for="(tree, idx) in trees"
