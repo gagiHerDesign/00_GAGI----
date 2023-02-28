@@ -64,6 +64,26 @@ const routes = [
         }
       },
       {
+        path: '/TreeContents/:id',
+        name: 'TreeContents',
+        component: () => import('src/pages/front/TreeContentsPage.vue'),
+        meta: {
+          title: '購物網 | 茶樹資訊',
+          login: false,
+          admin: false
+        }
+      },
+      {
+        path: '/myPlantCheck',
+        name: 'myPlantCheck',
+        component: () => import('src/pages/front/myPlantCheckPage.vue'),
+        meta: {
+          title: '購物網 | 購物車',
+          login: true,
+          admin: false
+        }
+      },
+      {
         path: '/test',
         name: 'test',
         component: () => import('src/pages/front/TestPage.vue'),

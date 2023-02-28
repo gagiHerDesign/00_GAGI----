@@ -5,8 +5,13 @@ import Swal from 'sweetalert2'
 import router from '../router/routes'
 
 export const useUserStore = defineStore('user', () => {
+  const _id = ref('')
   const token = ref('')
   const account = ref('')
+  const phone = ref('')
+  const address = ref('')
+  const gender = ref(0)
+  const birth = ref('')
   const email = ref('')
   const cart = ref(0)
   const plantCart = ref(0)
@@ -77,6 +82,48 @@ export const useUserStore = defineStore('user', () => {
       role.value = data.result.role
     } catch (error) {
       logout()
+    }
+  }
+  async function getMyself () {
+    if (token.value.length === 0) return
+    try {
+      const { data } = await apiAuth.get('/users/myself')
+      _id.value = data.result._id
+      email.value = data.result.email
+      phone.value = data.result.phone
+      role.value = data.result.role
+    } catch (error) {
+      logout()
+    }
+  }
+  // const getAllUsers = async () => {
+  //   try {
+  //     const { data } = await apiAuth.get('/users/allusers')
+  //     account.splice(0, account.length, ...data.result)
+  //   } catch (error) {
+  //     Notify.create({
+  //       message: '資料取得失敗',
+  //       textColor: 'secondary',
+  //       color: 'white',
+  //       icon: 'mdi-emoticon-dead-outline',
+  //       caption: error?.response?.data?.message || '發生錯誤'
+  //     })
+  //   }
+  // }
+  const editUser = async (form) => {
+    try {
+      await apiAuth.patch('/users/edituser', form)
+      Swal.fire({
+        icon: 'success',
+        title: '成功',
+        text: '編輯成功'
+      })
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: '失敗',
+        text: error?.response?.data?.message || '發生錯誤'
+      })
     }
   }
 
@@ -170,7 +217,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   return {
-    token, account, email, cart, plantCart, role, login, isLogin, isAdmin, avatars, logout, getUser, editCart, checkout, editPlantCart, treecheckout
+    _id, token, account, email, phone, address, gender, birth, cart, plantCart, role, login, isLogin, isAdmin, avatars, logout, getUser, getMyself, editUser, editCart, checkout, editPlantCart, treecheckout
   }
 }, {
   persist: {

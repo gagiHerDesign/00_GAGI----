@@ -1,28 +1,28 @@
 <template>
   <div id="Tcard">
-  <q-btn bordered :to="'/contents/' + _id" class="cardLook">
-  <div class="q-pa-md row items-start q-gutter-md">
+    <div class="container">
+
+  <q-btn bordered :to="'/TreeContents/' + _id" class="cardLook">
+  <div class="row items-start q-gutter-md">
     <q-card class="my-card" flat>
-      <div style="width: 100%; height: 100%">
-        <q-img :src="image" class="cardImg" />
-      </div>
+
+      <q-card-section horizontal>
+        <q-img :src="image" class="cardImg col-6" />
 
       <q-card-section>
-        <div class="text-overline text-orange-9">{{ category }}</div>
+        <div class="text-overline text-orange-9">{{ area }}</div>
         <div class="text-primary text-h5 q-mt-sm q-mb-xs">{{ name }}</div>
-        <div class="text-primary" style="font-weight: 100;">
-          {{ volume }}ml
-        </div>
-      </q-card-section>
 
       <q-card-actions>
-        <q-btn flat class="q-px-lg" color="dark" label="More" :to="'/contents/' + _id"
-          style="font-weight: 100;width: 70%; margin: auto;" />
+        <q-btn flat class="q-px-lg" color="dark" label="More" :to="'/TreeContents/' + _id"
+          style="font-weight: 100;" />
       </q-card-actions>
+       </q-card-section>
+      </q-card-section>
     </q-card>
   </div>
   </q-btn>
-  </div>
+  </div></div>
 </template>
 
 <script setup>
@@ -55,11 +55,7 @@ defineProps({
     type: Boolean,
     default: false
   },
-  category: {
-    type: String,
-    default: ''
-  },
-  volume: {
+  area: {
     type: String,
     default: ''
   }
@@ -72,28 +68,31 @@ defineProps({
 
 <style lang="scss">
 #Tcard{
+  .container{
+    width: 70%;
+    margin: auto;
+  }
   .q-btn{
   color: #fff;
+  padding: 0;
 }
 
 .q-card {
-  width: 250px;
+  width: 300px;
   background: rgba(205, 205, 28, 0);
 
-  .q-img__image {
-    filter: drop-shadow(5px 5px 1px #c7bfbc);
-  }
 }
 .cardLook{
   height: 100%;
+  background:#fff;
   .cardImg{
-    transform: scale(1.2);
+    transform: scale(1);
     transition: 1s;
   }
   &:hover{
-    background:linear-gradient(0deg, rgb(255, 255, 255) 70%, rgba(255, 255, 255, 0.09) 30%);
+
     .cardImg{
-      transform: scale(1.3);
+      transform: scale(1.2);
       transition: 1s;
     }
   }

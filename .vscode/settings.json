@@ -21,6 +21,8 @@
   "peacock.color": "#1857a4",
   "cSpell.words": [
     "axios",
+    "editmyself",
+    "edituser",
     "linesvg",
     "myplant",
     "myplants",
@@ -31,6 +33,7 @@
     "susi",
     "sweetalert",
     "Tcard",
-    "treecheckout"
+    "treecheckout",
+    "treeinfo"
   ]
 }

@@ -90,7 +90,7 @@
         陽光。大地。森林。山泉。微風<br>
         邀請您一起種下綠綠因子<br>
         </p>
-        <q-btn rounded class="btn" to="/">
+        <q-btn rounded class="btn" to="/tree">
             <img src="../../assets/img/story/btn.svg" >
           </q-btn>
       </section>

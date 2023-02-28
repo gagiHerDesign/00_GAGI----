@@ -65,6 +65,53 @@ export const extend = async (req, res) => {
   }
 }
 
+// 取自己的資料
+export const getMyself = (req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      message: '使用者資料取得成功',
+      result: {
+        email: req.user.email,
+        address: req.user.address,
+        phone: req.user.phone,
+        birth: req.user.birth,
+        avatar: req.user.avatar,
+        role: req.user.role,
+        gender: req.user.gender,
+        _id: req.user._id
+      }
+    })
+  } catch (error) {
+    res.status(500).json({ success: false, message: '未知錯誤' })
+  }
+}
+
+// 修改自己的資料
+export const editMyself = async (req, res) => {
+  try {
+    req.user.email = req.body.email
+    req.user.address = req.body.address
+    req.user.phone = req.body.phone
+    req.user.birth = req.body.birth
+    req.user.gender = req.body.gender
+    req.user.password = req.body.password
+    const result = req.user.save()
+    res.status(200).json({
+      success: true,
+      result: {
+        email: result.email,
+        address: result.address,
+        phone: result.phone,
+        birth: result.birth,
+        gender: result.gender
+      }
+    })
+  } catch (error) {
+    res.status(500).json({ success: false, message: '未知錯誤' })
+  }
+}
+
 export const getUser = (req, res) => {
   try {
     res.status(200).json({
@@ -190,6 +237,24 @@ export const getAllUsers = async (req, res) => {
     res.status(200).json({ success: true, message: '', result })
   } catch (error) {
     console.log(error)
+    res.status(500).json({ success: false, message: '未知錯誤' })
+  }
+}
+export const editUser = async (req, res) => {
+  try {
+    const result = await users.findById(req.body._id)
+    result.email = req.body.email || result.email
+    result.phone = req.body.phone || result.phone
+    result.password = req.body.password || result.password
+    await result.save()
+    res.status(200).json({
+      success: true,
+      result: {
+        email: result.email,
+        phone: result.phone
+      }
+    })
+  } catch (error) {
     res.status(500).json({ success: false, message: '未知錯誤' })
   }
 }
