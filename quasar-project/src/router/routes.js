@@ -8,7 +8,7 @@ const routes = [
         name: '',
         component: () => import('src/pages/front/IndexPage.vue'),
         meta: {
-          title: '購物網',
+          title: 'SUSI',
           login: false,
           admin: false
         }
@@ -18,7 +18,7 @@ const routes = [
         name: 'story',
         component: () => import('src/pages/front/StoryPage.vue'),
         meta: {
-          title: '購物網 | 品牌理念',
+          title: 'SUSI | 品牌理念',
           login: false,
           admin: false
         }
@@ -28,7 +28,7 @@ const routes = [
         name: 'products',
         component: () => import('src/pages/front/ProductPage.vue'),
         meta: {
-          title: '購物網 | 商品總覽',
+          title: 'SUSI | 商品總覽',
           login: false,
           admin: false
         }
@@ -38,7 +38,7 @@ const routes = [
         name: 'contents',
         component: () => import('src/pages/front/ContentPage.vue'),
         meta: {
-          title: '購物網 | 商品介紹',
+          title: 'SUSI | 商品介紹',
           login: false,
           admin: false
         }
@@ -48,7 +48,7 @@ const routes = [
         name: 'cart',
         component: () => import('src/pages/front/CartPage.vue'),
         meta: {
-          title: '購物網 | 購物車',
+          title: 'SUSI | SUSI',
           login: true,
           admin: false
         }
@@ -58,7 +58,7 @@ const routes = [
         name: 'tree',
         component: () => import('src/pages/front/TreePage.vue'),
         meta: {
-          title: '購物網 | 茶樹總覽',
+          title: 'SUSI | 茶樹總覽',
           login: true,
           admin: false
         }
@@ -68,7 +68,7 @@ const routes = [
         name: 'TreeContents',
         component: () => import('src/pages/front/TreeContentsPage.vue'),
         meta: {
-          title: '購物網 | 茶樹資訊',
+          title: 'SUSI | 茶樹資訊',
           login: false,
           admin: false
         }
@@ -78,7 +78,7 @@ const routes = [
         name: 'myPlantCheck',
         component: () => import('src/pages/front/myPlantCheckPage.vue'),
         meta: {
-          title: '購物網 | 購物車',
+          title: 'SUSI | SUSI',
           login: true,
           admin: false
         }
@@ -88,7 +88,7 @@ const routes = [
         name: 'test',
         component: () => import('src/pages/front/TestPage.vue'),
         meta: {
-          title: '購物網 | test',
+          title: 'SUSI | test',
           login: false,
           admin: false
         }
@@ -98,7 +98,7 @@ const routes = [
         name: '55',
         component: () => import('src/pages/front/TTPage.vue'),
         meta: {
-          title: '購物網 | 55',
+          title: 'SUSI | 55',
           login: false,
           admin: false
         }
